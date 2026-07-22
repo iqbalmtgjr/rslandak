@@ -442,5 +442,8 @@ class DatabaseSeeder extends Seeder
                 array_merge($a, ['aktif' => false]) // non-aktif sampai admin upload gambar
             );
         }
+
+        // Revisi Juli 2026 — dipisah karena aman dijalankan di production
+        $this->call(FasilitasSeeder::class);
     }
 }

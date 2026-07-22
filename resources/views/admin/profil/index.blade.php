@@ -11,7 +11,7 @@
 
     {{-- Tab Navigation --}}
     <div class="flex gap-1 mb-6 bg-gray-100 p-1 rounded-xl w-fit flex-wrap">
-        @foreach([['visi','Visi & Misi','fa-eye'], ['profil','Profil RS','fa-hospital'], ['nilai','Nilai-Nilai','fa-star'], ['direktur','Direktur','fa-user-tie']] as [$key, $label, $icon])
+        @foreach([['visi','Visi & Misi','fa-eye'], ['profil','Profil RS','fa-hospital'], ['nilai','Nilai-Nilai','fa-star'], ['direktur','Direktur','fa-user-tie'], ['struktur','Struktur Organisasi','fa-sitemap'], ['maklumat','Maklumat Pelayanan','fa-scroll']] as [$key, $label, $icon])
         <button type="button" @click="tab = '{{ $key }}'"
             :class="tab === '{{ $key }}' ? 'bg-green-700 text-white' : 'text-gray-600 hover:bg-gray-200'"
             class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all">
@@ -218,6 +218,54 @@
         </div>
     </div>
 
+    {{-- ===================== TAB STRUKTUR ORGANISASI ===================== --}}
+    <div x-show="tab === 'struktur'" class="bg-white rounded-xl shadow p-6 space-y-5">
+        <h2 class="font-bold text-gray-700 pb-2 border-b">Struktur Organisasi</h2>
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Gambar Bagan Struktur</label>
+            @if(!empty($settings['struktur_organisasi_gambar']))
+            <img id="preview-struktur-existing" src="{{ Storage::url($settings['struktur_organisasi_gambar']) }}"
+                 class="w-full max-w-lg rounded-lg border border-gray-200 mb-2">
+            @endif
+            <img id="preview-struktur" class="w-full max-w-lg rounded-lg border border-gray-200 mb-2 hidden">
+            <input type="file" name="struktur_organisasi_gambar" accept="image/*"
+                   onchange="previewFoto(this,'preview-struktur','preview-struktur-existing')"
+                   class="text-sm text-gray-600 block">
+            <p class="text-xs text-gray-400 mt-1">Gunakan gambar landscape resolusi tinggi agar teks bagan terbaca. Maks 2MB.</p>
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Keterangan (opsional)</label>
+            <textarea name="struktur_organisasi_keterangan" rows="5"
+                      class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ $settings['struktur_organisasi_keterangan'] ?? '' }}</textarea>
+        </div>
+    </div>
+
+    {{-- ===================== TAB MAKLUMAT PELAYANAN ===================== --}}
+    <div x-show="tab === 'maklumat'" class="bg-white rounded-xl shadow p-6 space-y-5">
+        <h2 class="font-bold text-gray-700 pb-2 border-b">Maklumat Pelayanan</h2>
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Gambar Pendamping</label>
+            @if(!empty($settings['maklumat_gambar']))
+            <img id="preview-maklumat-existing" src="{{ Storage::url($settings['maklumat_gambar']) }}"
+                 class="w-64 h-40 object-cover rounded-lg mb-2">
+            @endif
+            <img id="preview-maklumat" class="w-64 h-40 object-cover rounded-lg mb-2 hidden">
+            <input type="file" name="maklumat_gambar" accept="image/*"
+                   onchange="previewFoto(this,'preview-maklumat','preview-maklumat-existing')"
+                   class="text-sm text-gray-600 block">
+            <p class="text-xs text-gray-400 mt-1">Kosongkan untuk memakai Foto Gedung RS dari tab Profil RS.</p>
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Isi Maklumat</label>
+            <textarea name="maklumat_teks" rows="10"
+                      class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ $settings['maklumat_teks'] ?? '' }}</textarea>
+        </div>
+    </div>
+
     {{-- Sticky Save Button --}}
     <div class="sticky bottom-0 bg-white border-t border-gray-200 p-4 flex justify-end gap-3 mt-4 rounded-b-xl shadow-lg">
         <a href="{{ route('admin.dashboard') }}"
@@ -237,7 +285,7 @@
 function previewFoto(input, previewId, existingId) {
     const prev = document.getElementById(previewId);
     const existing = existingId ? document.getElementById(existingId) : null;
-    const placeholder = document.getElementById('preview-direktur-placeholder');
+    const placeholder = previewId === 'preview-direktur' ? document.getElementById('preview-direktur-placeholder') : null;
     if (input.files && input.files[0]) {
         const reader = new FileReader();
         reader.onload = e => {

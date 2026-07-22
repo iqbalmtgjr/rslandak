@@ -46,6 +46,14 @@
                             class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors {{ request()->routeIs('profil.direktur') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
                             <i class="fas fa-user-tie w-5 text-primary"></i> Direktur RS
                         </a>
+                        <a href="{{ route('profil.struktur-organisasi') }}"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors {{ request()->routeIs('profil.struktur-organisasi') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
+                            <i class="fas fa-sitemap w-5 text-primary"></i> Struktur Organisasi
+                        </a>
+                        <a href="{{ route('profil.maklumat') }}"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors {{ request()->routeIs('profil.maklumat') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
+                            <i class="fas fa-scroll w-5 text-primary"></i> Maklumat Pelayanan
+                        </a>
                     </div>
                 </div>
 
@@ -72,6 +80,18 @@
                         <a href="{{ route('layanan.pelayanan-24-jam') }}"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors text-sm {{ request()->routeIs('layanan.pelayanan-24-jam') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
                             <i class="fas fa-ambulance w-5 text-primary"></i> Pelayanan 24 Jam
+                        </a>
+                        <a href="{{ route('layanan.fasilitas') }}"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors text-sm {{ request()->routeIs('layanan.fasilitas') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
+                            <i class="fas fa-building w-5 text-primary"></i> Fasilitas
+                        </a>
+                        <a href="{{ route('layanan.fasilitas-difabel') }}"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors text-sm {{ request()->routeIs('layanan.fasilitas-difabel') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
+                            <i class="fas fa-wheelchair w-5 text-primary"></i> Fasilitas Difabel
+                        </a>
+                        <a href="{{ route('layanan.pengaduan') }}"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors text-sm {{ request()->routeIs('layanan.pengaduan') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
+                            <i class="fas fa-comments w-5 text-primary"></i> Informasi & Pengaduan
                         </a>
                     </div>
                 </div>
@@ -102,6 +122,30 @@
                         <a href="{{ route('informasi.dokter') }}"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors {{ request()->routeIs('informasi.dokter') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
                             <i class="fas fa-user-md w-5 text-primary"></i> Dokter
+                        </a>
+                    </div>
+                </div>
+                {{-- Dropdown Aplikasi --}}
+                <div class="relative" x-data="{ appOpen: false }">
+                    <button @click="appOpen = !appOpen" @click.away="appOpen = false"
+                        class="flex items-center gap-1 text-gray-700 hover:text-primary transition-colors">
+                        Aplikasi
+                        <i class="fas fa-chevron-down text-xs transition-transform duration-200"
+                            :class="appOpen ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="appOpen" x-transition:enter="transition ease-out duration-150"
+                        x-transition:enter-start="opacity-0 -translate-y-2"
+                        x-transition:enter-end="opacity-100 translate-y-0"
+                        class="absolute top-full right-0 mt-2 w-52 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
+                        <a href="{{ $settings['sippn_url'] ?? 'https://sippn.menpan.go.id' }}" target="_blank" rel="noopener"
+                            class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-primary transition-colors">
+                            <i class="fas fa-clipboard-check w-5 text-primary"></i> SIPPN
+                            <i class="fas fa-external-link-alt text-xs text-gray-300 ml-auto"></i>
+                        </a>
+                        <a href="{{ $settings['lapor_url'] ?? 'https://www.lapor.go.id' }}" target="_blank" rel="noopener"
+                            class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-primary transition-colors">
+                            <i class="fas fa-bullhorn w-5 text-primary"></i> SP4N-LAPOR
+                            <i class="fas fa-external-link-alt text-xs text-gray-300 ml-auto"></i>
                         </a>
                     </div>
                 </div>
@@ -148,6 +192,14 @@
                             class="block text-gray-600 hover:text-primary py-1.5 px-2 rounded {{ request()->routeIs('profil.direktur') ? 'text-primary font-semibold' : '' }}">
                             <i class="fas fa-user-tie mr-2 text-primary text-xs"></i>Direktur RS
                         </a>
+                        <a href="{{ route('profil.struktur-organisasi') }}" @click="open=false"
+                            class="block text-gray-600 hover:text-primary py-1.5 px-2 rounded {{ request()->routeIs('profil.struktur-organisasi') ? 'text-primary font-semibold' : '' }}">
+                            <i class="fas fa-sitemap mr-2 text-primary text-xs"></i>Struktur Organisasi
+                        </a>
+                        <a href="{{ route('profil.maklumat') }}" @click="open=false"
+                            class="block text-gray-600 hover:text-primary py-1.5 px-2 rounded {{ request()->routeIs('profil.maklumat') ? 'text-primary font-semibold' : '' }}">
+                            <i class="fas fa-scroll mr-2 text-primary text-xs"></i>Maklumat Pelayanan
+                        </a>
                     </div>
                 </div>
 
@@ -170,6 +222,18 @@
                         <a href="{{ route('layanan.pelayanan-24-jam') }}" @click="open=false"
                             class="block py-1.5 px-2 rounded text-sm {{ request()->routeIs('layanan.pelayanan-24-jam') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
                             <i class="fas fa-ambulance mr-2 text-primary text-xs"></i>Pelayanan 24 Jam
+                        </a>
+                        <a href="{{ route('layanan.fasilitas') }}" @click="open=false"
+                            class="block py-1.5 px-2 rounded text-sm {{ request()->routeIs('layanan.fasilitas') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
+                            <i class="fas fa-building mr-2 text-primary text-xs"></i>Fasilitas
+                        </a>
+                        <a href="{{ route('layanan.fasilitas-difabel') }}" @click="open=false"
+                            class="block py-1.5 px-2 rounded text-sm {{ request()->routeIs('layanan.fasilitas-difabel') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
+                            <i class="fas fa-wheelchair mr-2 text-primary text-xs"></i>Fasilitas Difabel
+                        </a>
+                        <a href="{{ route('layanan.pengaduan') }}" @click="open=false"
+                            class="block py-1.5 px-2 rounded text-sm {{ request()->routeIs('layanan.pengaduan') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
+                            <i class="fas fa-comments mr-2 text-primary text-xs"></i>Informasi &amp; Pengaduan
                         </a>
                     </div>
                 </div>
@@ -196,6 +260,24 @@
                         <a href="{{ route('informasi.dokter') }}" @click="open=false"
                             class="block py-1.5 px-2 rounded {{ request()->routeIs('informasi.dokter') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
                             <i class="fas fa-user-md mr-2 text-primary text-xs"></i>Dokter
+                        </a>
+                    </div>
+                </div>
+                {{-- Dropdown mobile Aplikasi --}}
+                <div x-data="{ appOpen: false }">
+                    <button @click="appOpen = !appOpen"
+                        class="w-full flex items-center justify-between py-2 px-2 rounded text-gray-700 hover:text-primary">
+                        <span>Aplikasi</span>
+                        <i class="fas fa-chevron-down text-xs" :class="appOpen ? 'rotate-180' : ''"></i>
+                    </button>
+                    <div x-show="appOpen" class="pl-4 pb-1 space-y-1">
+                        <a href="{{ $settings['sippn_url'] ?? 'https://sippn.menpan.go.id' }}" target="_blank" rel="noopener"
+                            class="block py-1.5 px-2 rounded text-gray-600 hover:text-primary">
+                            <i class="fas fa-clipboard-check mr-2 text-primary text-xs"></i>SIPPN
+                        </a>
+                        <a href="{{ $settings['lapor_url'] ?? 'https://www.lapor.go.id' }}" target="_blank" rel="noopener"
+                            class="block py-1.5 px-2 rounded text-gray-600 hover:text-primary">
+                            <i class="fas fa-bullhorn mr-2 text-primary text-xs"></i>SP4N-LAPOR
                         </a>
                     </div>
                 </div>

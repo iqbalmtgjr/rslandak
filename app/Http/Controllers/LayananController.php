@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Fasilitas;
 use App\Models\Kamar;
 use App\Models\Pelayanan24Jam;
 use App\Models\Poliklinik;
@@ -47,5 +48,22 @@ class LayananController extends Controller
     {
         $items = Pelayanan24Jam::aktif()->orderBy('urutan')->get();
         return view('layanan.pelayanan-24-jam', compact('items'));
+    }
+
+    public function fasilitas()
+    {
+        $items = Fasilitas::aktif()->where('untuk_difabel', false)->orderBy('urutan')->get();
+        return view('layanan.fasilitas', compact('items'));
+    }
+
+    public function fasilitasDifabel()
+    {
+        $items = Fasilitas::aktif()->where('untuk_difabel', true)->orderBy('urutan')->get();
+        return view('layanan.fasilitas-difabel', compact('items'));
+    }
+
+    public function pengaduan()
+    {
+        return view('layanan.pengaduan');
     }
 }

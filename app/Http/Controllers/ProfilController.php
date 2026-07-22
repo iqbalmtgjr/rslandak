@@ -23,6 +23,10 @@ class ProfilController extends Controller
             'direktur_sambutan',
             'direktur_pendidikan',
             'direktur_riwayat',
+            'struktur_organisasi_gambar',
+            'struktur_organisasi_keterangan',
+            'maklumat_gambar',
+            'maklumat_teks',
             'nama_rs',
             'alamat',
             'telepon',
@@ -55,6 +59,30 @@ class ProfilController extends Controller
             'nilai'     => json_decode($s['profil_rs_nilai'] ?? '[]', true) ?: [],
             'nama_rs'   => $s['nama_rs'] ?? 'RSUD Landak',
             'settings'  => $settings,
+        ]);
+    }
+
+    public function strukturOrganisasi()
+    {
+        $s = $this->settings();
+        $settings = SiteSetting::pluck('value', 'key');
+        return view('profil.struktur-organisasi', [
+            'gambar'     => $s['struktur_organisasi_gambar'] ?? null,
+            'keterangan' => $s['struktur_organisasi_keterangan'] ?? '',
+            'nama_rs'    => $s['nama_rs'] ?? 'RSUD Landak',
+            'settings'   => $settings,
+        ]);
+    }
+
+    public function maklumat()
+    {
+        $s = $this->settings();
+        $settings = SiteSetting::pluck('value', 'key');
+        return view('profil.maklumat', [
+            'gambar'   => $s['maklumat_gambar'] ?? $s['profil_rs_foto'] ?? null,
+            'teks'     => $s['maklumat_teks'] ?? '',
+            'nama_rs'  => $s['nama_rs'] ?? 'RSUD Landak',
+            'settings' => $settings,
         ]);
     }
 

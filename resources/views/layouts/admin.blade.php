@@ -321,6 +321,10 @@
                 class="sidebar-link {{ request()->routeIs('admin.kamar.*') ? 'active' : '' }}">
                 <i class="fas fa-bed w-4"></i> Kamar
             </a>
+            <a href="{{ route('admin.fasilitas.index') }}"
+                class="sidebar-link {{ request()->routeIs('admin.fasilitas.*') ? 'active' : '' }}">
+                <i class="fas fa-building w-4"></i> Fasilitas
+            </a>
             <a href="{{ route('admin.poliklinik.index') }}"
                 class="sidebar-link {{ request()->routeIs('admin.poliklinik.*') ? 'active' : '' }}">
                 <i class="fas fa-clinic-medical w-4"></i> Poliklinik

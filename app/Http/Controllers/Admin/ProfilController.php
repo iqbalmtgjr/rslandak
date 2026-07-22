@@ -18,6 +18,8 @@ class ProfilController extends Controller
         'direktur_jabatan',
         'direktur_nrp',
         'direktur_sambutan',
+        'struktur_organisasi_keterangan',
+        'maklumat_teks',
     ];
 
     private array $jsonKeys = [
@@ -30,6 +32,8 @@ class ProfilController extends Controller
     private array $imageKeys = [
         'profil_rs_foto',
         'direktur_foto',
+        'struktur_organisasi_gambar',
+        'maklumat_gambar',
     ];
 
     public function index()

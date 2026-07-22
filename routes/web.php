@@ -22,6 +22,7 @@ use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\Admin\PoliklinikController as AdminPoliklinikController;
 use App\Http\Controllers\Admin\Pelayanan24JamController as AdminPelayanan24JamController;
 use App\Http\Controllers\Admin\AlurPelayananController as AdminAlurPelayananController;
+use App\Http\Controllers\Admin\FasilitasController as AdminFasilitasController;
 use App\Http\Controllers\PendaftaranController;
 use App\Http\Controllers\Admin\PendaftaranController as AdminPendaftaranController;
 
@@ -40,6 +41,9 @@ Route::prefix('layanan')->name('layanan.')->group(function () {
     Route::get('/poliklinik/{slug}', [PublicLayananController::class, 'poliklinikDetail'])->name('poliklinik.show');
     Route::get('/rawat-inap',        [PublicLayananController::class, 'rawatInap'])->name('rawat-inap');
     Route::get('/pelayanan-24-jam',  [PublicLayananController::class, 'pelayanan24Jam'])->name('pelayanan-24-jam');
+    Route::get('/fasilitas',         [PublicLayananController::class, 'fasilitas'])->name('fasilitas');
+    Route::get('/fasilitas-difabel', [PublicLayananController::class, 'fasilitasDifabel'])->name('fasilitas-difabel');
+    Route::get('/pengaduan',         [PublicLayananController::class, 'pengaduan'])->name('pengaduan');
 });
 
 // Leaflet & Poster — Publik
@@ -57,6 +61,8 @@ Route::prefix('profil')->name('profil.')->group(function () {
     Route::get('/visi-misi', [ProfilController::class, 'visiMisi'])->name('visi-misi');
     Route::get('/profil-rs', [ProfilController::class, 'profilRs'])->name('profil-rs');
     Route::get('/direktur',  [ProfilController::class, 'direktur'])->name('direktur');
+    Route::get('/struktur-organisasi', [ProfilController::class, 'strukturOrganisasi'])->name('struktur-organisasi');
+    Route::get('/maklumat-pelayanan',  [ProfilController::class, 'maklumat'])->name('maklumat');
 });
 
 // === PENDAFTARAN ONLINE — Publik ===
@@ -117,6 +123,17 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
         Route::put('/{id}',        [AdminPelayanan24JamController::class, 'update'])->name('update');
         Route::delete('/{id}',     [AdminPelayanan24JamController::class, 'destroy'])->name('destroy');
         Route::post('/{id}/toggle', [AdminPelayanan24JamController::class, 'toggle'])->name('toggle');
+    });
+
+    // Fasilitas
+    Route::prefix('fasilitas')->name('fasilitas.')->group(function () {
+        Route::get('/',             [AdminFasilitasController::class, 'index'])->name('index');
+        Route::get('/create',       [AdminFasilitasController::class, 'create'])->name('create');
+        Route::post('/',            [AdminFasilitasController::class, 'store'])->name('store');
+        Route::get('/{id}/edit',    [AdminFasilitasController::class, 'edit'])->name('edit');
+        Route::put('/{id}',         [AdminFasilitasController::class, 'update'])->name('update');
+        Route::delete('/{id}',      [AdminFasilitasController::class, 'destroy'])->name('destroy');
+        Route::post('/{id}/toggle', [AdminFasilitasController::class, 'toggle'])->name('toggle');
     });
 
     // Download

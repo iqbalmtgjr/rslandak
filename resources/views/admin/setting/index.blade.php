@@ -82,6 +82,31 @@
         </div>
     </div>
 
+    {{-- Pengaduan & Aplikasi --}}
+    <div class="bg-white rounded-xl shadow p-6">
+        <h2 class="font-bold text-gray-700 mb-4 pb-2 border-b">Pengaduan & Aplikasi</h2>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1"><i class="fab fa-whatsapp text-green-500 mr-1"></i> WhatsApp Pengaduan</label>
+                <input type="text" name="pengaduan_wa" value="{{ $settings['pengaduan_wa'] ?? '' }}" placeholder="628xxxxxxxxxx" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+                <p class="text-xs text-gray-400 mt-1">Format: 62xxxxxxxxxx (tanpa + dan spasi). Kosongkan untuk menyembunyikan.</p>
+            </div>
+            <div></div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1"><i class="fas fa-clipboard-check text-primary mr-1"></i> URL SIPPN</label>
+                <input type="url" name="sippn_url" value="{{ $settings['sippn_url'] ?? '' }}" placeholder="https://sippn.menpan.go.id" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+            </div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1"><i class="fas fa-bullhorn text-gold mr-1"></i> URL SP4N-LAPOR</label>
+                <input type="url" name="lapor_url" value="{{ $settings['lapor_url'] ?? '' }}" placeholder="https://www.lapor.go.id" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+            </div>
+            <div class="md:col-span-2">
+                <label class="block text-sm font-medium text-gray-700 mb-1">Alur & Ketentuan Pengaduan</label>
+                <textarea name="pengaduan_teks" rows="6" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ $settings['pengaduan_teks'] ?? '' }}</textarea>
+            </div>
+        </div>
+    </div>
+
     {{-- Sambutan Direktur --}}
     <div class="bg-white rounded-xl shadow p-6">
         <h2 class="font-bold text-gray-700 mb-4 pb-2 border-b">Sambutan Direktur</h2>
