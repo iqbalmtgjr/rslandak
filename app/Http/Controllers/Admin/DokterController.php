@@ -14,7 +14,7 @@ class DokterController extends Controller
         $query = Dokter::query();
         if ($request->search) {
             $query->where('nama', 'like', '%' . $request->search . '%')
-                  ->orWhere('spesialisasi', 'like', '%' . $request->search . '%');
+                ->orWhere('spesialisasi', 'like', '%' . $request->search . '%');
         }
         $dokters = $query->orderBy('urutan')->paginate(10)->withQueryString();
         return view('admin.dokter.index', compact('dokters'));

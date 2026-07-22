@@ -43,7 +43,7 @@ class AlurPelayananController extends Controller
         ]);
 
         return redirect()->route('admin.alur-pelayanan.index')
-                         ->with('success', 'Alur pelayanan berhasil ditambahkan.');
+            ->with('success', 'Alur pelayanan berhasil ditambahkan.');
     }
 
     public function edit(int $id)
@@ -78,7 +78,7 @@ class AlurPelayananController extends Controller
         ]);
 
         return redirect()->route('admin.alur-pelayanan.index')
-                         ->with('success', 'Alur pelayanan berhasil diperbarui.');
+            ->with('success', 'Alur pelayanan berhasil diperbarui.');
     }
 
     public function destroy(int $id)

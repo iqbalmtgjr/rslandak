@@ -114,7 +114,7 @@
       <label class="block text-sm font-semibold text-gray-700 mb-1">
         Keterangan Tambahan <span class="text-gray-400 font-normal">(Opsional)</span>
       </label>
-      <textarea name="keterangan" rows="3"
+      <textarea name="keterangan" rows="3" data-no-wysiwyg
                 placeholder="Catatan atau penjelasan singkat tentang alur ini (ditampilkan di bawah gambar)"
                 class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-primary/30 focus:border-primary resize-none">{{ old('keterangan', $alur->keterangan ?? '') }}</textarea>
     </div>

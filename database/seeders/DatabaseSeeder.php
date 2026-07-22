@@ -371,8 +371,12 @@ class DatabaseSeeder extends Seeder
             foreach ($data['items'] as $i => $itemData) {
                 LeafletItem::firstOrCreate(
                     ['kategori_id' => $kat->id, 'nama' => $itemData['nama']],
-                    ['url_gdrive' => $itemData['url_gdrive'], 'deskripsi' => $itemData['deskripsi'],
-                     'urutan' => $i + 1, 'aktif' => true]
+                    [
+                        'url_gdrive' => $itemData['url_gdrive'],
+                        'deskripsi' => $itemData['deskripsi'],
+                        'urutan' => $i + 1,
+                        'aktif' => true
+                    ]
                 );
             }
         }
@@ -420,7 +424,7 @@ class DatabaseSeeder extends Seeder
             ['nama' => 'VIP',      'tarif' => 1020000],
             ['nama' => 'Kelas I',  'tarif' => 450000],
             ['nama' => 'Kelas II', 'tarif' => 225000],
-            ['nama' => 'Kelas III','tarif' => 75000],
+            ['nama' => 'Kelas III', 'tarif' => 75000],
         ];
         foreach ($kamarTarifs as $kt) {
             \App\Models\Kamar::where('nama', $kt['nama'])->update(['tarif' => $kt['tarif']]);

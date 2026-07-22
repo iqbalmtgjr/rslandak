@@ -24,8 +24,8 @@ class DownloadController extends Controller
         if ($search) {
             $query->where(function ($q) use ($search) {
                 $q->where('judul', 'like', "%$search%")
-                  ->orWhere('deskripsi', 'like', "%$search%")
-                  ->orWhere('nama_file', 'like', "%$search%");
+                    ->orWhere('deskripsi', 'like', "%$search%")
+                    ->orWhere('nama_file', 'like', "%$search%");
             });
         }
 

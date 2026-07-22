@@ -21,7 +21,7 @@ class LayananController extends Controller
     {
         $poli = Poliklinik::aktif()->where('slug', $slug)
             ->with(['dokters' => fn($q) => $q->where('rssite_dokters.aktif', true)
-                                             ->orderBy('rssite_dokter_poliklinik.urutan')])
+                ->orderBy('rssite_dokter_poliklinik.urutan')])
             ->firstOrFail();
         return view('layanan.poliklinik.show', compact('poli'));
     }

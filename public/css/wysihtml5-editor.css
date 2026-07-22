@@ -1,0 +1,14 @@
+/* Stylesheet untuk isi iframe editor wysihtml5 (bukan halaman admin) */
+body {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #374151;
+    margin: 0;
+    padding: 10px 12px;
+}
+body p { margin: 0 0 10px; }
+body ul, body ol { margin: 0 0 10px; padding-left: 22px; }
+body blockquote { margin: 0 0 10px; padding-left: 12px; border-left: 3px solid #d1d5db; color: #6b7280; }
+body a { color: #2563EB; text-decoration: underline; }
+body img { max-width: 100%; height: auto; }

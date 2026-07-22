@@ -42,7 +42,7 @@ class KamarController extends Controller
 
         $fotoData = $this->handleFotoGallery($request);
 
-        $data = $request->except(['gambar', '_token', 'fasilitas', 'foto_1','foto_2','foto_3','foto_4','foto_5']);
+        $data = $request->except(['gambar', '_token', 'fasilitas', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'foto_5']);
         $data['aktif']    = $request->boolean('aktif');
         $data['gambar']   = $this->handleImageUpload($request, 'gambar');
         $data['fasilitas'] = array_values(array_filter($request->fasilitas ?? [], fn($f) => !empty(trim($f))));
@@ -76,7 +76,7 @@ class KamarController extends Controller
 
         $fotoData = $this->handleFotoGallery($request, $kamar);
 
-        $data = $request->except(['gambar', '_token', '_method', 'fasilitas', 'foto_1','foto_2','foto_3','foto_4','foto_5']);
+        $data = $request->except(['gambar', '_token', '_method', 'fasilitas', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'foto_5']);
         $data['aktif']    = $request->boolean('aktif');
         $data['gambar']   = $this->handleImageUpload($request, 'gambar', $kamar->gambar);
         $data['fasilitas'] = array_values(array_filter($request->fasilitas ?? [], fn($f) => !empty(trim($f))));

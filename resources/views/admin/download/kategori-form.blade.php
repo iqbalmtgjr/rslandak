@@ -66,7 +66,7 @@
       {{-- Deskripsi --}}
       <div class="mb-5">
         <label class="block text-sm font-semibold text-gray-700 mb-1.5">Deskripsi</label>
-        <textarea name="deskripsi" rows="2" placeholder="Keterangan singkat tentang kategori ini"
+        <textarea name="deskripsi" rows="2" placeholder="Keterangan singkat tentang kategori ini" data-no-wysiwyg
                   class="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ old('deskripsi', $kategori->deskripsi ?? '') }}</textarea>
       </div>
 

@@ -10,23 +10,33 @@ use Illuminate\Support\Facades\Storage;
 class ProfilController extends Controller
 {
     private array $profilKeys = [
-        'profil_visi', 'profil_motto',
-        'profil_rs_sejarah', 'profil_rs_legalitas',
-        'direktur_nama', 'direktur_jabatan', 'direktur_nrp', 'direktur_sambutan',
+        'profil_visi',
+        'profil_motto',
+        'profil_rs_sejarah',
+        'profil_rs_legalitas',
+        'direktur_nama',
+        'direktur_jabatan',
+        'direktur_nrp',
+        'direktur_sambutan',
     ];
 
     private array $jsonKeys = [
-        'profil_misi', 'profil_rs_nilai', 'direktur_pendidikan', 'direktur_riwayat',
+        'profil_misi',
+        'profil_rs_nilai',
+        'direktur_pendidikan',
+        'direktur_riwayat',
     ];
 
     private array $imageKeys = [
-        'profil_rs_foto', 'direktur_foto',
+        'profil_rs_foto',
+        'direktur_foto',
     ];
 
     public function index()
     {
         $allKeys = array_merge($this->profilKeys, $this->jsonKeys, $this->imageKeys);
         $settings = SiteSetting::whereIn('key', $allKeys)->pluck('value', 'key');
+        $settings->put('logo', SiteSetting::get('logo'));
         return view('admin.profil.index', compact('settings'));
     }
 

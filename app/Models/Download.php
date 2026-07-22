@@ -9,9 +9,16 @@ class Download extends Model
 {
     protected $table    = 'rssite_downloads';
     protected $fillable = [
-        'kategori_id', 'judul', 'deskripsi', 'nama_file',
-        'path_file', 'tipe_file', 'mime_type', 'ukuran_file',
-        'jumlah_download', 'aktif',
+        'kategori_id',
+        'judul',
+        'deskripsi',
+        'nama_file',
+        'path_file',
+        'tipe_file',
+        'mime_type',
+        'ukuran_file',
+        'jumlah_download',
+        'aktif',
     ];
     protected $casts = ['aktif' => 'boolean'];
 

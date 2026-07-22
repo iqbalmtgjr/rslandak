@@ -9,11 +9,24 @@ class ProfilController extends Controller
     private function settings(): array
     {
         return SiteSetting::whereIn('key', [
-            'profil_visi', 'profil_misi', 'profil_motto',
-            'profil_rs_foto', 'profil_rs_sejarah', 'profil_rs_legalitas', 'profil_rs_nilai',
-            'direktur_nama', 'direktur_jabatan', 'direktur_nrp', 'direktur_foto',
-            'direktur_sambutan', 'direktur_pendidikan', 'direktur_riwayat',
-            'nama_rs', 'alamat', 'telepon', 'email',
+            'profil_visi',
+            'profil_misi',
+            'profil_motto',
+            'profil_rs_foto',
+            'profil_rs_sejarah',
+            'profil_rs_legalitas',
+            'profil_rs_nilai',
+            'direktur_nama',
+            'direktur_jabatan',
+            'direktur_nrp',
+            'direktur_foto',
+            'direktur_sambutan',
+            'direktur_pendidikan',
+            'direktur_riwayat',
+            'nama_rs',
+            'alamat',
+            'telepon',
+            'email',
         ])->pluck('value', 'key')->toArray();
     }
 

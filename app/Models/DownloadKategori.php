@@ -22,7 +22,7 @@ class DownloadKategori extends Model
     public function downloads()
     {
         return $this->hasMany(Download::class, 'kategori_id')
-                    ->where('aktif', true)->latest();
+            ->where('aktif', true)->latest();
     }
 
     public function allDownloads()
@@ -30,7 +30,10 @@ class DownloadKategori extends Model
         return $this->hasMany(Download::class, 'kategori_id')->latest();
     }
 
-    public function scopeAktif($q) { return $q->where('aktif', true); }
+    public function scopeAktif($q)
+    {
+        return $q->where('aktif', true);
+    }
 
     public function getJumlahFileAttribute(): int
     {

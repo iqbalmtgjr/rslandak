@@ -9,13 +9,25 @@ class Pendaftaran extends Model
 {
     protected $table    = 'rssite_pendaftarans';
     protected $fillable = [
-        'kode', 'nama_lengkap', 'nik', 'tempat_lahir', 'tanggal_lahir',
-        'jenis_kelamin', 'nomor_telepon', 'alamat',
-        'status_pasien', 'jenis_layanan', 'nama_asuransi',
-        'poli_tujuan', 'catatan',
-        'foto_ktp', 'foto_bpjs',
-        'status', 'catatan_admin',
-        'sudah_konfirmasi_wa', 'dikonfirmasi_at',
+        'kode',
+        'nama_lengkap',
+        'nik',
+        'tempat_lahir',
+        'tanggal_lahir',
+        'jenis_kelamin',
+        'nomor_telepon',
+        'alamat',
+        'status_pasien',
+        'jenis_layanan',
+        'nama_asuransi',
+        'poli_tujuan',
+        'catatan',
+        'foto_ktp',
+        'foto_bpjs',
+        'status',
+        'catatan_admin',
+        'sudah_konfirmasi_wa',
+        'dikonfirmasi_at',
     ];
 
     protected $casts = [

@@ -15,6 +15,6 @@ class Dokter extends Model
     public function polikliniks()
     {
         return $this->belongsToMany(Poliklinik::class, 'rssite_dokter_poliklinik', 'dokter_id', 'poliklinik_id')
-                    ->withPivot('urutan');
+            ->withPivot('urutan');
     }
 }

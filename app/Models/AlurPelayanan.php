@@ -10,7 +10,10 @@ class AlurPelayanan extends Model
     protected $fillable = ['judul', 'gambar', 'keterangan', 'urutan', 'aktif'];
     protected $casts    = ['aktif' => 'boolean'];
 
-    public function scopeAktif($q) { return $q->where('aktif', true); }
+    public function scopeAktif($q)
+    {
+        return $q->where('aktif', true);
+    }
 
     public function getGambarUrlAttribute(): ?string
     {

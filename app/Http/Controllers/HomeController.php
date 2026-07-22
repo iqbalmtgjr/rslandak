@@ -22,5 +22,4 @@ class HomeController extends Controller
 
         return view('home', compact('heroes', 'layanans', 'dokters', 'kamars', 'beritas', 'settings'));
     }
-
 }

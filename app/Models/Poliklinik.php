@@ -22,10 +22,13 @@ class Poliklinik extends Model
     public function dokters()
     {
         return $this->belongsToMany(Dokter::class, 'rssite_dokter_poliklinik', 'poliklinik_id', 'dokter_id')
-                    ->withPivot('urutan')->orderBy('rssite_dokter_poliklinik.urutan');
+            ->withPivot('urutan')->orderBy('rssite_dokter_poliklinik.urutan');
     }
 
-    public function scopeAktif($q) { return $q->where('aktif', true); }
+    public function scopeAktif($q)
+    {
+        return $q->where('aktif', true);
+    }
 
     public function getJumlahDokterAttribute(): int
     {

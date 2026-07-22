@@ -32,7 +32,7 @@
                     <div class="w-16 h-1 rounded-full mb-4" style="background: #D97706"></div>
 
                     @if($poli->deskripsi)
-                    <p class="text-gray-600 leading-relaxed">{{ $poli->deskripsi }}</p>
+                    <div class="text-gray-600 leading-relaxed">{!! $poli->deskripsi !!}</div>
                     @else
                     <p class="text-gray-400 italic text-sm">Deskripsi poliklinik sedang diperbarui.</p>
                     @endif
@@ -56,7 +56,7 @@
                 <i class="fas fa-list-ol text-blue-600"></i>
                 Prosedur Layanan
             </h2>
-            <div class="text-gray-700 leading-relaxed whitespace-pre-line text-sm">{{ $poli->prosedur }}</div>
+            <div class="text-gray-700 leading-relaxed text-sm">{!! $poli->prosedur !!}</div>
         </div>
         @endif
 

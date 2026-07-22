@@ -47,7 +47,7 @@ class LeafletController extends Controller
         ]);
 
         return redirect()->route('admin.leaflet.index', ['tipe' => $request->tipe])
-                         ->with('success', 'Kategori berhasil ditambahkan.');
+            ->with('success', 'Kategori berhasil ditambahkan.');
     }
 
     public function editKategori(int $id)
@@ -73,7 +73,7 @@ class LeafletController extends Controller
         ]);
 
         return redirect()->route('admin.leaflet.index', ['tipe' => $request->tipe])
-                         ->with('success', 'Kategori berhasil diperbarui.');
+            ->with('success', 'Kategori berhasil diperbarui.');
     }
 
     public function destroyKategori(int $id)
@@ -119,7 +119,7 @@ class LeafletController extends Controller
 
         $tipe = LeafletKategori::find($request->kategori_id)?->tipe ?? 'Leaflet';
         return redirect()->route('admin.leaflet.index', ['tipe' => $tipe])
-                         ->with('success', 'Item berhasil ditambahkan.');
+            ->with('success', 'Item berhasil ditambahkan.');
     }
 
     public function editItem(int $id)
@@ -151,7 +151,7 @@ class LeafletController extends Controller
 
         $tipe = $item->kategori?->tipe ?? 'Leaflet';
         return redirect()->route('admin.leaflet.index', ['tipe' => $tipe])
-                         ->with('success', 'Item berhasil diperbarui.');
+            ->with('success', 'Item berhasil diperbarui.');
     }
 
     public function destroyItem(int $id)

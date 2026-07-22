@@ -23,9 +23,9 @@ class PendaftaranController extends Controller
             $q = $request->q;
             $query->where(function ($sq) use ($q) {
                 $sq->where('nama_lengkap', 'like', "%$q%")
-                   ->orWhere('kode', 'like', "%$q%")
-                   ->orWhere('nik', 'like', "%$q%")
-                   ->orWhere('nomor_telepon', 'like', "%$q%");
+                    ->orWhere('kode', 'like', "%$q%")
+                    ->orWhere('nik', 'like', "%$q%")
+                    ->orWhere('nomor_telepon', 'like', "%$q%");
             });
         }
 

@@ -10,7 +10,10 @@ class Pelayanan24Jam extends Model
     protected $fillable = ['nama', 'deskripsi', 'foto', 'urutan', 'aktif'];
     protected $casts    = ['aktif' => 'boolean'];
 
-    public function scopeAktif($q) { return $q->where('aktif', true); }
+    public function scopeAktif($q)
+    {
+        return $q->where('aktif', true);
+    }
 
     public function getFotoUrlAttribute(): ?string
     {

@@ -140,7 +140,7 @@
         <div>
           <label class="block text-xs text-gray-500 mb-1">Catatan Admin</label>
           <textarea name="catatan_admin" rows="3"
-                    placeholder="Catatan untuk pasien (opsional)"
+                    placeholder="Catatan untuk pasien (opsional)" data-no-wysiwyg
                     class="w-full border border-gray-200 rounded-lg px-3 py-2 text-sm resize-none focus:outline-none focus:ring-2 focus:ring-green-500">{{ $p->catatan_admin }}</textarea>
         </div>
         <button type="submit"

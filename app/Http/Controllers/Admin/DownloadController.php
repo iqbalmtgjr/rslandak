@@ -12,8 +12,19 @@ use Illuminate\Support\Str;
 class DownloadController extends Controller
 {
     private array $allowedExt = [
-        'pdf', 'doc', 'docx', 'xls', 'xlsx', 'ppt', 'pptx',
-        'jpg', 'jpeg', 'png', 'gif', 'zip', 'rar',
+        'pdf',
+        'doc',
+        'docx',
+        'xls',
+        'xlsx',
+        'ppt',
+        'pptx',
+        'jpg',
+        'jpeg',
+        'png',
+        'gif',
+        'zip',
+        'rar',
     ];
     private int $maxMb = 20;
 
@@ -60,7 +71,7 @@ class DownloadController extends Controller
         ]);
 
         return redirect()->route('admin.download.index', ['tab' => 'kategori'])
-                         ->with('success', 'Kategori berhasil ditambahkan.');
+            ->with('success', 'Kategori berhasil ditambahkan.');
     }
 
     public function editKategori(int $id)
@@ -91,7 +102,7 @@ class DownloadController extends Controller
         ]);
 
         return redirect()->route('admin.download.index', ['tab' => 'kategori'])
-                         ->with('success', 'Kategori berhasil diperbarui.');
+            ->with('success', 'Kategori berhasil diperbarui.');
     }
 
     public function destroyKategori(int $id)
@@ -99,13 +110,15 @@ class DownloadController extends Controller
         $k = DownloadKategori::withCount('allDownloads')->findOrFail($id);
 
         if ($k->all_downloads_count > 0) {
-            return redirect()->back()->with('error',
-                "Kategori \"{$k->nama}\" masih memiliki {$k->all_downloads_count} file. Hapus semua file dalam kategori ini terlebih dahulu.");
+            return redirect()->back()->with(
+                'error',
+                "Kategori \"{$k->nama}\" masih memiliki {$k->all_downloads_count} file. Hapus semua file dalam kategori ini terlebih dahulu."
+            );
         }
 
         $k->delete();
         return redirect()->route('admin.download.index', ['tab' => 'kategori'])
-                         ->with('success', 'Kategori berhasil dihapus.');
+            ->with('success', 'Kategori berhasil dihapus.');
     }
 
     public function toggleKategori(int $id)
@@ -162,7 +175,7 @@ class DownloadController extends Controller
         ]);
 
         return redirect()->route('admin.download.index')
-                         ->with('success', 'File berhasil diupload.');
+            ->with('success', 'File berhasil diupload.');
     }
 
     public function editFile(int $id)
@@ -213,7 +226,7 @@ class DownloadController extends Controller
         $file->update($data);
 
         return redirect()->route('admin.download.index')
-                         ->with('success', 'File berhasil diperbarui.');
+            ->with('success', 'File berhasil diperbarui.');
     }
 
     public function destroyFile(int $id)

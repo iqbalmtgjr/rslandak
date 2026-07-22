@@ -31,8 +31,13 @@ class BeritaController extends Controller
         $countKegiatan    = Berita::where('aktif', true)->where('kategori', 'Kegiatan')->count();
 
         return view('berita.index', compact(
-            'beritas', 'kategori', 'search',
-            'countAll', 'countBerita', 'countPengumuman', 'countKegiatan',
+            'beritas',
+            'kategori',
+            'search',
+            'countAll',
+            'countBerita',
+            'countPengumuman',
+            'countKegiatan',
             'settings'
         ));
     }

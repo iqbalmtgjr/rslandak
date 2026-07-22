@@ -9,9 +9,19 @@ class Kamar extends Model
     protected $table = 'rssite_kamars';
 
     protected $fillable = [
-        'nama', 'deskripsi', 'fasilitas', 'gambar', 'badge',
-        'tarif', 'foto_1', 'foto_2', 'foto_3', 'foto_4', 'foto_5',
-        'urutan', 'aktif',
+        'nama',
+        'deskripsi',
+        'fasilitas',
+        'gambar',
+        'badge',
+        'tarif',
+        'foto_1',
+        'foto_2',
+        'foto_3',
+        'foto_4',
+        'foto_5',
+        'urutan',
+        'aktif',
     ];
 
     protected $casts = ['fasilitas' => 'array', 'aktif' => 'boolean'];
@@ -19,7 +29,7 @@ class Kamar extends Model
     public function getFotosAttribute(): array
     {
         $fotos = [];
-        foreach (['foto_1','foto_2','foto_3','foto_4','foto_5'] as $col) {
+        foreach (['foto_1', 'foto_2', 'foto_3', 'foto_4', 'foto_5'] as $col) {
             if ($this->$col) $fotos[] = asset('storage/' . $this->$col);
         }
         return $fotos;
