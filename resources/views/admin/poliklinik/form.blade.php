@@ -1,14 +1,24 @@
 @extends('layouts.admin')
+<<<<<<< HEAD
 @section('title', isset($poli) && $poli ? 'Edit Klinik' : 'Tambah Klinik')
 @section('breadcrumb')
     / <a href="{{ route('admin.poliklinik.index') }}" class="hover:text-green-700">Klinik</a>
+=======
+@section('title', isset($poli) && $poli ? 'Edit Poliklinik' : 'Tambah Poliklinik')
+@section('breadcrumb')
+    / <a href="{{ route('admin.poliklinik.index') }}" class="hover:text-green-700">Poliklinik</a>
+>>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
     / <span class="text-gray-700">{{ isset($poli) && $poli ? 'Edit' : 'Tambah' }}</span>
 @endsection
 
 @section('content')
 <div class="max-w-3xl">
     <h1 class="text-2xl font-bold text-gray-800 mb-6">
+<<<<<<< HEAD
         {{ isset($poli) && $poli ? 'Edit Klinik: ' . $poli->nama : 'Tambah Klinik' }}
+=======
+        {{ isset($poli) && $poli ? 'Edit Poliklinik: ' . $poli->nama : 'Tambah Poliklinik' }}
+>>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
     </h1>
 
     @if($errors->any())
@@ -26,7 +36,11 @@
 
         {{-- Nama --}}
         <div>
+<<<<<<< HEAD
             <label class="block text-sm font-medium text-gray-700 mb-1">Nama Klinik <span class="text-red-500">*</span></label>
+=======
+            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Poliklinik <span class="text-red-500">*</span></label>
+>>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
             <input type="text" name="nama" value="{{ old('nama', $poli->nama ?? '') }}" required
                    class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
         </div>
@@ -89,9 +103,15 @@
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Prosedur Layanan</label>
             <textarea name="prosedur" rows="4"
+<<<<<<< HEAD
                       placeholder="Jelaskan prosedur / alur layanan klinik ini..."
                       class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ old('prosedur', $poli->prosedur ?? '') }}</textarea>
             <p class="text-xs text-gray-400 mt-1">Opsional. Akan ditampilkan di halaman detail klinik.</p>
+=======
+                      placeholder="Jelaskan prosedur / alur layanan poliklinik ini..."
+                      class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ old('prosedur', $poli->prosedur ?? '') }}</textarea>
+            <p class="text-xs text-gray-400 mt-1">Opsional. Akan ditampilkan di halaman detail poliklinik.</p>
+>>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
         </div>
 
         {{-- Urutan & Status --}}

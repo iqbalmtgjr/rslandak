@@ -219,6 +219,7 @@
     </div>
 
     {{-- ===================== TAB STRUKTUR ORGANISASI ===================== --}}
+<<<<<<< HEAD
     <div x-show="tab === 'struktur'" class="bg-white rounded-xl shadow p-6 space-y-5"
          x-data="{ bidang: {{ Js::from(json_decode($settings['struktur_organisasi_json'] ?? '[]', true) ?: []) }} }">
         <div class="flex items-center justify-between pb-2 border-b">
@@ -323,6 +324,28 @@
                 <textarea name="struktur_organisasi_keterangan" rows="3"
                           class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ $settings['struktur_organisasi_keterangan'] ?? '' }}</textarea>
             </div>
+=======
+    <div x-show="tab === 'struktur'" class="bg-white rounded-xl shadow p-6 space-y-5">
+        <h2 class="font-bold text-gray-700 pb-2 border-b">Struktur Organisasi</h2>
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Gambar Bagan Struktur</label>
+            @if(!empty($settings['struktur_organisasi_gambar']))
+            <img id="preview-struktur-existing" src="{{ Storage::url($settings['struktur_organisasi_gambar']) }}"
+                 class="w-full max-w-lg rounded-lg border border-gray-200 mb-2">
+            @endif
+            <img id="preview-struktur" class="w-full max-w-lg rounded-lg border border-gray-200 mb-2 hidden">
+            <input type="file" name="struktur_organisasi_gambar" accept="image/*"
+                   onchange="previewFoto(this,'preview-struktur','preview-struktur-existing')"
+                   class="text-sm text-gray-600 block">
+            <p class="text-xs text-gray-400 mt-1">Gunakan gambar landscape resolusi tinggi agar teks bagan terbaca. Maks 2MB.</p>
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Keterangan (opsional)</label>
+            <textarea name="struktur_organisasi_keterangan" rows="5"
+                      class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ $settings['struktur_organisasi_keterangan'] ?? '' }}</textarea>
+>>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
         </div>
     </div>
 

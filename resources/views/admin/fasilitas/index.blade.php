@@ -39,6 +39,7 @@
                     </td>
                     <td class="py-3 font-medium text-gray-800">{{ $item->nama }}</td>
                     <td class="py-3">
+<<<<<<< HEAD
                         @php
                             $badgeColor = [
                                 'klinik' => 'bg-blue-100 text-blue-700',
@@ -56,6 +57,10 @@
                         @endphp
                         <span class="text-xs px-2 py-1 rounded-full font-semibold {{ $badgeColor }}">
                             {{ $kategoriLabel }}
+=======
+                        <span class="text-xs px-2 py-1 rounded-full font-semibold {{ $item->untuk_difabel ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700' }}">
+                            {{ $item->untuk_difabel ? 'Difabel' : 'Umum' }}
+>>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                         </span>
                     </td>
                     <td class="py-3 text-gray-600">{{ $item->urutan }}</td>

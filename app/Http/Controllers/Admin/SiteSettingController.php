@@ -12,13 +12,20 @@ class SiteSettingController extends Controller
     public function index()
     {
         $settings = SiteSetting::pluck('value', 'key');
+<<<<<<< HEAD
 
+=======
+>>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
         return view('admin.setting.index', compact('settings'));
     }
 
     public function update(Request $request)
     {
+<<<<<<< HEAD
         $imageKeys = ['logo', 'favicon', 'sambutan_direktur_foto', 'pengaduan_barcode'];
+=======
+        $imageKeys = ['logo', 'favicon', 'sambutan_direktur_foto'];
+>>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
 
         foreach ($request->except(['_token', '_method']) as $key => $value) {
             if (in_array($key, $imageKeys)) {
@@ -30,9 +37,13 @@ class SiteSettingController extends Controller
         foreach ($imageKeys as $key) {
             if ($request->hasFile($key)) {
                 $old = SiteSetting::get($key);
+<<<<<<< HEAD
                 if ($old) {
                     Storage::disk('public')->delete($old);
                 }
+=======
+                if ($old) Storage::disk('public')->delete($old);
+>>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                 $path = $request->file($key)->store('rssite/images', 'public');
                 SiteSetting::updateOrCreate(['key' => $key], ['value' => $path]);
             }

@@ -25,7 +25,11 @@
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Kategori <span class="text-red-500">*</span></label>
                 <select name="kategori" required class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+<<<<<<< HEAD
                     @foreach(['Berita', 'Pengumuman', 'Kegiatan', 'Promosi Kesehatan'] as $kat)
+=======
+                    @foreach(['Berita', 'Pengumuman', 'Kegiatan'] as $kat)
+>>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                     <option value="{{ $kat }}" {{ old('kategori', $berita->kategori ?? 'Berita') === $kat ? 'selected' : '' }}>{{ $kat }}</option>
                     @endforeach
                 </select>

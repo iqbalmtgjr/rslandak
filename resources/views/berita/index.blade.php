@@ -38,12 +38,15 @@
                   {{ $kategori === 'Kegiatan' ? 'bg-blue-600 text-white border-blue-600 shadow' : 'bg-white text-gray-600 border-gray-300 hover:border-blue-500 hover:text-blue-600' }}">
           Kegiatan <span class="ml-1 text-xs opacity-75">({{ $countKegiatan }})</span>
         </a>
+<<<<<<< HEAD
 
         <a href="{{ route('berita.index', array_filter(['kategori' => 'Promosi Kesehatan', 'q' => $search ?: null])) }}"
            class="px-5 py-2 rounded-full text-sm font-medium transition-all border
                   {{ $kategori === 'Promosi Kesehatan' ? 'bg-purple-600 text-white border-purple-600 shadow' : 'bg-white text-gray-600 border-gray-300 hover:border-purple-500 hover:text-purple-600' }}">
           Promosi Kesehatan (PKRS) <span class="ml-1 text-xs opacity-75">({{ $countPkrs }})</span>
         </a>
+=======
+>>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
       </div>
 
       {{-- Search --}}
