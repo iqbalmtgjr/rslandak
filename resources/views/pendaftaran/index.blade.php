@@ -16,11 +16,7 @@
           <li>Pendaftaran online berlaku untuk kunjungan hari ini atau maksimal H+1</li>
           <li>Setelah mendaftar, <strong>wajib konfirmasi via WhatsApp</strong> ke bagian pendaftaran</li>
           <li>Bawa KTP asli dan kartu BPJS (jika ada) saat datang ke RS</li>
-<<<<<<< HEAD
-          <li>Jadwal klinik dapat berubah sewaktu-waktu</li>
-=======
           <li>Jadwal poli dapat berubah sewaktu-waktu</li>
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
         </ul>
       </div>
     </div>
@@ -177,15 +173,9 @@
           <div class="space-y-4">
 
             <div>
-<<<<<<< HEAD
-              <label class="form-label">Klinik Tujuan <span class="text-red-500">*</span></label>
-              <select name="poli_tujuan" class="form-input @error('poli_tujuan') border-red-400 @enderror">
-                <option value="">-- Pilih Klinik Tujuan --</option>
-=======
               <label class="form-label">Poli Tujuan <span class="text-red-500">*</span></label>
               <select name="poli_tujuan" class="form-input @error('poli_tujuan') border-red-400 @enderror">
                 <option value="">-- Pilih Poli Tujuan --</option>
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                 @foreach($polikliniks as $poli)
                   <option value="{{ $poli }}" {{ old('poli_tujuan') === $poli ? 'selected' : '' }}>{{ $poli }}</option>
                 @endforeach

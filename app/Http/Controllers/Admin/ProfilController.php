@@ -27,10 +27,6 @@ class ProfilController extends Controller
         'profil_rs_nilai',
         'direktur_pendidikan',
         'direktur_riwayat',
-<<<<<<< HEAD
-        'struktur_organisasi_json',
-=======
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
     ];
 
     private array $imageKeys = [
@@ -70,33 +66,6 @@ class ProfilController extends Controller
         $riw = array_values(array_filter($request->input('direktur_riwayat', [])));
         SiteSetting::updateOrCreate(['key' => 'direktur_riwayat'], ['value' => json_encode($riw)]);
 
-<<<<<<< HEAD
-        // struktur_organisasi_json: nested division/members list
-        $struktur = $request->input('struktur_organisasi', []);
-        if (is_array($struktur)) {
-            foreach ($struktur as $i => $bidang) {
-                if (isset($bidang['anggota']) && is_array($bidang['anggota'])) {
-                    foreach ($bidang['anggota'] as $j => $anggota) {
-                        $fotoPath = $anggota['foto_existing'] ?? null;
-                        if ($request->hasFile("struktur_organisasi.{$i}.anggota.{$j}.foto")) {
-                            if ($fotoPath) {
-                                Storage::disk('public')->delete($fotoPath);
-                            }
-                            $file = $request->file("struktur_organisasi.{$i}.anggota.{$j}.foto");
-                            $fotoPath = $file->store('rssite/profil/struktur', 'public');
-                        }
-                        $struktur[$i]['anggota'][$j]['foto'] = $fotoPath;
-                        unset($struktur[$i]['anggota'][$j]['foto_existing']);
-                    }
-                } else {
-                    $struktur[$i]['anggota'] = [];
-                }
-            }
-            SiteSetting::updateOrCreate(['key' => 'struktur_organisasi_json'], ['value' => json_encode(array_values($struktur))]);
-        }
-
-=======
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
         foreach ($this->imageKeys as $key) {
             if ($request->hasFile($key)) {
                 $old = SiteSetting::where('key', $key)->value('value');

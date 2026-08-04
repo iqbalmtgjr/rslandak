@@ -34,11 +34,7 @@
                     @if($poli->deskripsi)
                     <div class="text-gray-600 leading-relaxed">{!! $poli->deskripsi !!}</div>
                     @else
-<<<<<<< HEAD
-                    <p class="text-gray-400 italic text-sm">Deskripsi klinik sedang diperbarui.</p>
-=======
                     <p class="text-gray-400 italic text-sm">Deskripsi poliklinik sedang diperbarui.</p>
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                     @endif
 
                     @if($poli->jumlah_dokter > 0)

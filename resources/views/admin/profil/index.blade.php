@@ -219,112 +219,6 @@
     </div>
 
     {{-- ===================== TAB STRUKTUR ORGANISASI ===================== --}}
-<<<<<<< HEAD
-    <div x-show="tab === 'struktur'" class="bg-white rounded-xl shadow p-6 space-y-5"
-         x-data="{ bidang: {{ Js::from(json_decode($settings['struktur_organisasi_json'] ?? '[]', true) ?: []) }} }">
-        <div class="flex items-center justify-between pb-2 border-b">
-            <h2 class="font-bold text-gray-700">Struktur Organisasi (Per Bidang/Jabatan)</h2>
-            <button type="button" @click="bidang.push({ nama_bidang: '', anggota: [] })"
-                    class="text-xs bg-green-700 text-white hover:bg-green-800 px-3 py-1.5 rounded-lg font-semibold flex items-center gap-1">
-                <i class="fas fa-plus"></i> Tambah Bidang/Bagian
-            </button>
-        </div>
-
-        <div class="space-y-6">
-            <template x-for="(b, i) in bidang" :key="i">
-                <div class="border border-gray-200 rounded-xl p-4 bg-gray-50 relative">
-                    <button type="button" @click="bidang.splice(i, 1)"
-                            class="absolute top-4 right-4 text-red-500 hover:text-red-700 text-sm">
-                        <i class="fas fa-trash-alt mr-1"></i> Hapus Bidang
-                    </button>
-
-                    <div class="max-w-md mb-4">
-                        <label class="block text-xs font-semibold text-gray-600 mb-1">Nama Bidang / Divisi / Bagian</label>
-                        <input type="text" :name="`struktur_organisasi[${i}][nama_bidang]`" x-model="b.nama_bidang"
-                               placeholder="Contoh: Bidang Pelayanan Medis"
-                               class="w-full border border-gray-300 rounded-lg px-3 py-1.5 text-sm focus:outline-none focus:ring-2 focus:ring-green-500 font-semibold text-gray-800">
-                    </div>
-
-                    <div class="space-y-3">
-                        <div class="flex items-center justify-between">
-                            <h4 class="text-xs font-bold text-gray-500 uppercase tracking-wider">Anggota / Pejabat</h4>
-                            <button type="button" @click="b.anggota.push({ nama: '', jabatan: '', nip: '', foto: null })"
-                                    class="text-xs border border-green-700 text-green-700 hover:bg-green-50 px-2.5 py-1 rounded">
-                                <i class="fas fa-plus mr-0.5"></i> Tambah Anggota
-                            </button>
-                        </div>
-
-                        <div class="grid grid-cols-1 gap-4">
-                            <template x-for="(member, j) in b.anggota" :key="j">
-                                <div class="bg-white border border-gray-100 rounded-lg p-3 grid grid-cols-1 md:grid-cols-4 gap-3 items-center relative">
-                                    <button type="button" @click="b.anggota.splice(j, 1)"
-                                            class="absolute top-2 right-2 text-gray-400 hover:text-red-500 text-xs">
-                                        <i class="fas fa-times"></i>
-                                    </button>
-
-                                    {{-- Photo Preview & Input --}}
-                                    <div class="flex items-center gap-3 col-span-1">
-                                        <div class="w-12 h-16 bg-gray-100 rounded border flex items-center justify-center overflow-hidden flex-shrink-0">
-                                            <template x-if="member.foto">
-                                                <img :src="'/storage/' + member.foto" class="w-full h-full object-cover">
-                                            </template>
-                                            <template x-if="!member.foto">
-                                                <i class="fas fa-user text-gray-300 text-lg"></i>
-                                            </template>
-                                        </div>
-                                        <div class="flex-1">
-                                            <label class="block text-[10px] text-gray-400 mb-0.5 font-semibold">Foto</label>
-                                            <input type="file" :name="`struktur_organisasi[${i}][anggota][${j}][foto]`" accept="image/*" class="text-xs text-gray-500 file:mr-2 file:py-1 file:px-2 file:rounded file:border-0 file:text-xs file:font-semibold file:bg-green-50 file:text-green-700 hover:file:bg-green-100">
-                                            <input type="hidden" :name="`struktur_organisasi[${i}][anggota][${j}][foto_existing]`" :value="member.foto">
-                                        </div>
-                                    </div>
-
-                                    {{-- Name --}}
-                                    <div>
-                                        <label class="block text-[10px] text-gray-400 mb-0.5 font-semibold">Nama Lengkap</label>
-                                        <input type="text" :name="`struktur_organisasi[${i}][anggota][${j}][nama]`" x-model="member.nama" placeholder="Nama Lengkap & Gelar" class="w-full border border-gray-300 rounded px-2 py-1 text-xs focus:ring-1 focus:ring-green-500 focus:outline-none">
-                                    </div>
-
-                                    {{-- Position --}}
-                                    <div>
-                                        <label class="block text-[10px] text-gray-400 mb-0.5 font-semibold">Jabatan</label>
-                                        <input type="text" :name="`struktur_organisasi[${i}][anggota][${j}][jabatan]`" x-model="member.jabatan" placeholder="Contoh: Kepala Seksi" class="w-full border border-gray-300 rounded px-2 py-1 text-xs focus:ring-1 focus:ring-green-500 focus:outline-none">
-                                    </div>
-
-                                    {{-- NIP/NRP --}}
-                                    <div>
-                                        <label class="block text-[10px] text-gray-400 mb-0.5 font-semibold">NIP / NRP</label>
-                                        <input type="text" :name="`struktur_organisasi[${i}][anggota][${j}][nip]`" x-model="member.nip" placeholder="NIP. 19xxxxxxxxxxxxxx" class="w-full border border-gray-300 rounded px-2 py-1 text-xs focus:ring-1 focus:ring-green-500 focus:outline-none">
-                                    </div>
-                                </div>
-                            </template>
-                        </div>
-                    </div>
-                </div>
-            </template>
-        </div>
-
-        <div class="mt-8 pt-5 border-t border-gray-200">
-            <h3 class="font-bold text-gray-700 mb-3">Fallback: Bagan Struktur (Gambar)</h3>
-            <div>
-                <label class="block text-sm font-medium text-gray-700 mb-1">Gambar Bagan Struktur</label>
-                @if(!empty($settings['struktur_organisasi_gambar']))
-                <img id="preview-struktur-existing" src="{{ Storage::url($settings['struktur_organisasi_gambar']) }}"
-                     class="w-full max-w-lg rounded-lg border border-gray-200 mb-2">
-                @endif
-                <img id="preview-struktur" class="w-full max-w-lg rounded-lg border border-gray-200 mb-2 hidden">
-                <input type="file" name="struktur_organisasi_gambar" accept="image/*"
-                       onchange="previewFoto(this,'preview-struktur','preview-struktur-existing')"
-                       class="text-sm text-gray-600 block">
-                <p class="text-xs text-gray-400 mt-1">Gunakan ini jika Anda ingin tetap menampilkan gambar bagan utuh sebagai alternatif. Maks 2MB.</p>
-            </div>
-
-            <div class="mt-4">
-                <label class="block text-sm font-medium text-gray-700 mb-1">Keterangan (opsional)</label>
-                <textarea name="struktur_organisasi_keterangan" rows="3"
-                          class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ $settings['struktur_organisasi_keterangan'] ?? '' }}</textarea>
-            </div>
-=======
     <div x-show="tab === 'struktur'" class="bg-white rounded-xl shadow p-6 space-y-5">
         <h2 class="font-bold text-gray-700 pb-2 border-b">Struktur Organisasi</h2>
 
@@ -345,7 +239,6 @@
             <label class="block text-sm font-medium text-gray-700 mb-1">Keterangan (opsional)</label>
             <textarea name="struktur_organisasi_keterangan" rows="5"
                       class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ $settings['struktur_organisasi_keterangan'] ?? '' }}</textarea>
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
         </div>
     </div>
 

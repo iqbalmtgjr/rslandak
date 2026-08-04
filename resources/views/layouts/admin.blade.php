@@ -327,11 +327,7 @@
             </a>
             <a href="{{ route('admin.poliklinik.index') }}"
                 class="sidebar-link {{ request()->routeIs('admin.poliklinik.*') ? 'active' : '' }}">
-<<<<<<< HEAD
-                <i class="fas fa-clinic-medical w-4"></i> Klinik
-=======
                 <i class="fas fa-clinic-medical w-4"></i> Poliklinik
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
             </a>
             <a href="{{ route('admin.pelayanan24jam.index') }}"
                 class="sidebar-link {{ request()->routeIs('admin.pelayanan24jam.*') ? 'active' : '' }}">
@@ -349,13 +345,6 @@
                 class="sidebar-link {{ request()->routeIs('admin.leaflet.*') ? 'active' : '' }}">
                 <i class="fas fa-file-medical w-4"></i> Leaflet & Poster
             </a>
-<<<<<<< HEAD
-            <a href="{{ route('admin.skm.index') }}"
-                class="sidebar-link {{ request()->routeIs('admin.skm.*') ? 'active' : '' }}">
-                <i class="fas fa-poll w-4"></i> Upload SKM
-            </a>
-=======
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
 
             <a href="{{ route('admin.pendaftaran.index') }}"
                 class="sidebar-link {{ request()->routeIs('admin.pendaftaran.*') ? 'active' : '' }}">
@@ -369,13 +358,6 @@
                     </span>
                 @endif
             </a>
-<<<<<<< HEAD
-            <a href="{{ route('admin.saran.index') }}"
-                class="sidebar-link {{ request()->routeIs('admin.saran.*') ? 'active' : '' }}">
-                <i class="fas fa-comments w-4"></i> Kotak Saran/Feedback
-            </a>
-=======
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
 
             <div class="sidebar-label mt-3">Pengaturan</div>
             <a href="{{ route('admin.setting.index') }}"

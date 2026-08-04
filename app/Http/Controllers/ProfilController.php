@@ -38,22 +38,12 @@ class ProfilController extends Controller
     {
         $s = $this->settings();
         $settings = SiteSetting::pluck('value', 'key');
-<<<<<<< HEAD
-
-        return view('profil.visi-misi', [
-            'visi' => $s['profil_visi'] ?? '',
-            'misi' => json_decode($s['profil_misi'] ?? '[]', true) ?: [],
-            'motto' => $s['profil_motto'] ?? '',
-            'foto' => $s['profil_rs_foto'] ?? null,
-            'nama_rs' => $s['nama_rs'] ?? 'RSUD Landak',
-=======
         return view('profil.visi-misi', [
             'visi'     => $s['profil_visi'] ?? '',
             'misi'     => json_decode($s['profil_misi'] ?? '[]', true) ?: [],
             'motto'    => $s['profil_motto'] ?? '',
             'foto'     => $s['profil_rs_foto'] ?? null,
             'nama_rs'  => $s['nama_rs'] ?? 'RSUD Landak',
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
             'settings' => $settings,
         ]);
     }
@@ -62,16 +52,6 @@ class ProfilController extends Controller
     {
         $s = $this->settings();
         $settings = SiteSetting::pluck('value', 'key');
-<<<<<<< HEAD
-
-        return view('profil.profil-rs', [
-            'foto' => $s['profil_rs_foto'] ?? null,
-            'sejarah' => $s['profil_rs_sejarah'] ?? '',
-            'legalitas' => $s['profil_rs_legalitas'] ?? '',
-            'nilai' => json_decode($s['profil_rs_nilai'] ?? '[]', true) ?: [],
-            'nama_rs' => $s['nama_rs'] ?? 'RSUD Landak',
-            'settings' => $settings,
-=======
         return view('profil.profil-rs', [
             'foto'      => $s['profil_rs_foto'] ?? null,
             'sejarah'   => $s['profil_rs_sejarah'] ?? '',
@@ -79,7 +59,6 @@ class ProfilController extends Controller
             'nilai'     => json_decode($s['profil_rs_nilai'] ?? '[]', true) ?: [],
             'nama_rs'   => $s['nama_rs'] ?? 'RSUD Landak',
             'settings'  => $settings,
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
         ]);
     }
 
@@ -87,20 +66,11 @@ class ProfilController extends Controller
     {
         $s = $this->settings();
         $settings = SiteSetting::pluck('value', 'key');
-<<<<<<< HEAD
-
-        return view('profil.struktur-organisasi', [
-            'gambar' => $s['struktur_organisasi_gambar'] ?? null,
-            'keterangan' => $s['struktur_organisasi_keterangan'] ?? '',
-            'nama_rs' => $s['nama_rs'] ?? 'RSUD Landak',
-            'settings' => $settings,
-=======
         return view('profil.struktur-organisasi', [
             'gambar'     => $s['struktur_organisasi_gambar'] ?? null,
             'keterangan' => $s['struktur_organisasi_keterangan'] ?? '',
             'nama_rs'    => $s['nama_rs'] ?? 'RSUD Landak',
             'settings'   => $settings,
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
         ]);
     }
 
@@ -108,19 +78,10 @@ class ProfilController extends Controller
     {
         $s = $this->settings();
         $settings = SiteSetting::pluck('value', 'key');
-<<<<<<< HEAD
-
-        return view('profil.maklumat', [
-            'gambar' => $s['maklumat_gambar'] ?? $s['profil_rs_foto'] ?? null,
-            'maklumat_gambar' => $s['maklumat_gambar'] ?? null,
-            'teks' => $s['maklumat_teks'] ?? '',
-            'nama_rs' => $s['nama_rs'] ?? 'RSUD Landak',
-=======
         return view('profil.maklumat', [
             'gambar'   => $s['maklumat_gambar'] ?? $s['profil_rs_foto'] ?? null,
             'teks'     => $s['maklumat_teks'] ?? '',
             'nama_rs'  => $s['nama_rs'] ?? 'RSUD Landak',
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
             'settings' => $settings,
         ]);
     }
@@ -129,31 +90,6 @@ class ProfilController extends Controller
     {
         $s = $this->settings();
         $settings = SiteSetting::pluck('value', 'key');
-<<<<<<< HEAD
-
-        return view('profil.direktur', [
-            'nama' => $s['direktur_nama'] ?? '',
-            'jabatan' => $s['direktur_jabatan'] ?? '',
-            'nrp' => $s['direktur_nrp'] ?? '',
-            'foto' => $s['direktur_foto'] ?? null,
-            'sambutan' => $s['direktur_sambutan'] ?? '',
-            'pendidikan' => json_decode($s['direktur_pendidikan'] ?? '[]', true) ?: [],
-            'riwayat' => json_decode($s['direktur_riwayat'] ?? '[]', true) ?: [],
-            'settings' => $settings,
-        ]);
-    }
-
-    public function skm()
-    {
-        $settings = SiteSetting::pluck('value', 'key');
-        $skms = \App\Models\Skm::aktif()->orderBy('tahun', 'desc')->orderBy('urutan')->get();
-        $skmsByYear = $skms->groupBy('tahun');
-
-        return view('profil.skm', [
-            'skmsByYear' => $skmsByYear,
-            'settings' => $settings,
-            'nama_rs' => $settings['nama_rs'] ?? 'RSUD Landak',
-=======
         return view('profil.direktur', [
             'nama'       => $s['direktur_nama'] ?? '',
             'jabatan'    => $s['direktur_jabatan'] ?? '',
@@ -163,7 +99,6 @@ class ProfilController extends Controller
             'pendidikan' => json_decode($s['direktur_pendidikan'] ?? '[]', true) ?: [],
             'riwayat'    => json_decode($s['direktur_riwayat'] ?? '[]', true) ?: [],
             'settings'   => $settings,
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
         ]);
     }
 }

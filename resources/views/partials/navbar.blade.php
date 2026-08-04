@@ -54,13 +54,6 @@
                             class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors {{ request()->routeIs('profil.maklumat') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
                             <i class="fas fa-scroll w-5 text-primary"></i> Maklumat Pelayanan
                         </a>
-<<<<<<< HEAD
-                        <a href="{{ route('profil.skm') }}"
-                            class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors {{ request()->routeIs('profil.skm') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
-                            <i class="fas fa-poll w-5 text-primary"></i> Hasil Penilaian SKM
-                        </a>
-=======
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                     </div>
                 </div>
 
@@ -78,11 +71,7 @@
                         class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
                         <a href="{{ route('layanan.poliklinik.index') }}"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors text-sm {{ request()->routeIs('layanan.poliklinik.*') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
-<<<<<<< HEAD
-                            <i class="fas fa-clinic-medical w-5 text-primary"></i> Klinik
-=======
                             <i class="fas fa-clinic-medical w-5 text-primary"></i> Poliklinik
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                         </a>
                         <a href="{{ route('layanan.rawat-inap') }}"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors text-sm {{ request()->routeIs('layanan.rawat-inap') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
@@ -96,23 +85,16 @@
                             class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors text-sm {{ request()->routeIs('layanan.fasilitas') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
                             <i class="fas fa-building w-5 text-primary"></i> Fasilitas
                         </a>
-<<<<<<< HEAD
-=======
                         <a href="{{ route('layanan.fasilitas-difabel') }}"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors text-sm {{ request()->routeIs('layanan.fasilitas-difabel') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
                             <i class="fas fa-wheelchair w-5 text-primary"></i> Fasilitas Difabel
                         </a>
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                         <a href="{{ route('layanan.pengaduan') }}"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors text-sm {{ request()->routeIs('layanan.pengaduan') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
                             <i class="fas fa-comments w-5 text-primary"></i> Informasi & Pengaduan
                         </a>
                     </div>
                 </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                 {{-- Dropdown Informasi --}}
                 <div class="relative" x-data="{ infoOpen: false }">
                     <button @click="infoOpen = !infoOpen" @click.away="infoOpen = false"
@@ -126,19 +108,9 @@
                         x-transition:enter-end="opacity-100 translate-y-0"
                         class="absolute top-full left-0 mt-2 w-52 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
                         <a href="{{ route('berita.index') }}"
-<<<<<<< HEAD
-                            class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors {{ request()->routeIs('berita.*') && request()->input('kategori') !== 'Promosi Kesehatan' ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
-                            <i class="fas fa-newspaper w-5 text-primary"></i> Berita
-                        </a>
-                        <a href="{{ route('berita.index', ['kategori' => 'Promosi Kesehatan']) }}"
-                            class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors {{ request()->input('kategori') === 'Promosi Kesehatan' ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
-                            <i class="fas fa-bullhorn w-5 text-primary"></i> Promosi Kesehatan (PKRS)
-                        </a>
-=======
                             class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors {{ request()->routeIs('berita.*') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
                             <i class="fas fa-newspaper w-5 text-primary"></i> Berita
                         </a>
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                         <a href="{{ route('leaflet.index') }}"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors {{ request()->routeIs('leaflet.*') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
                             <i class="fas fa-file-medical w-5 text-primary"></i> Leaflet & Poster
@@ -153,10 +125,6 @@
                         </a>
                     </div>
                 </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                 {{-- Dropdown Aplikasi --}}
                 <div class="relative" x-data="{ appOpen: false }">
                     <button @click="appOpen = !appOpen" @click.away="appOpen = false"
@@ -176,11 +144,7 @@
                         </a>
                         <a href="{{ $settings['lapor_url'] ?? 'https://www.lapor.go.id' }}" target="_blank" rel="noopener"
                             class="flex items-center gap-3 px-4 py-3 text-gray-700 hover:bg-blue-50 hover:text-primary transition-colors">
-<<<<<<< HEAD
-                            <i class="fas fa-bullhorn w-5 text-primary"></i> SP4N-LAPOR!
-=======
                             <i class="fas fa-bullhorn w-5 text-primary"></i> SP4N-LAPOR
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                             <i class="fas fa-external-link-alt text-xs text-gray-300 ml-auto"></i>
                         </a>
                     </div>
@@ -208,11 +172,7 @@
                 <a href="{{ route('home') }}#beranda" @click="open=false"
                     class="text-gray-700 hover:text-primary py-2 px-2 rounded">Beranda</a>
 
-<<<<<<< HEAD
-                {{-- Dropdown mobile Profil RS --}}
-=======
                 {{-- Dropdown mobile --}}
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                 <div x-data="{ subOpen: false }">
                     <button @click="subOpen = !subOpen"
                         class="w-full flex items-center justify-between text-gray-700 hover:text-primary py-2 px-2 rounded {{ request()->routeIs('profil.*') ? 'text-primary font-semibold' : '' }}">
@@ -240,13 +200,6 @@
                             class="block text-gray-600 hover:text-primary py-1.5 px-2 rounded {{ request()->routeIs('profil.maklumat') ? 'text-primary font-semibold' : '' }}">
                             <i class="fas fa-scroll mr-2 text-primary text-xs"></i>Maklumat Pelayanan
                         </a>
-<<<<<<< HEAD
-                        <a href="{{ route('profil.skm') }}" @click="open=false"
-                            class="block text-gray-600 hover:text-primary py-1.5 px-2 rounded {{ request()->routeIs('profil.skm') ? 'text-primary font-semibold' : '' }}">
-                            <i class="fas fa-poll mr-2 text-primary text-xs"></i>Hasil Penilaian SKM
-                        </a>
-=======
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                     </div>
                 </div>
 
@@ -260,11 +213,7 @@
                     <div x-show="layananOpen" class="pl-4 pb-1 space-y-1">
                         <a href="{{ route('layanan.poliklinik.index') }}" @click="open=false"
                             class="block py-1.5 px-2 rounded text-sm {{ request()->routeIs('layanan.poliklinik.*') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
-<<<<<<< HEAD
-                            <i class="fas fa-clinic-medical mr-2 text-primary text-xs"></i>Klinik
-=======
                             <i class="fas fa-clinic-medical mr-2 text-primary text-xs"></i>Poliklinik
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                         </a>
                         <a href="{{ route('layanan.rawat-inap') }}" @click="open=false"
                             class="block py-1.5 px-2 rounded text-sm {{ request()->routeIs('layanan.rawat-inap') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
@@ -278,23 +227,16 @@
                             class="block py-1.5 px-2 rounded text-sm {{ request()->routeIs('layanan.fasilitas') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
                             <i class="fas fa-building mr-2 text-primary text-xs"></i>Fasilitas
                         </a>
-<<<<<<< HEAD
-=======
                         <a href="{{ route('layanan.fasilitas-difabel') }}" @click="open=false"
                             class="block py-1.5 px-2 rounded text-sm {{ request()->routeIs('layanan.fasilitas-difabel') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
                             <i class="fas fa-wheelchair mr-2 text-primary text-xs"></i>Fasilitas Difabel
                         </a>
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                         <a href="{{ route('layanan.pengaduan') }}" @click="open=false"
                             class="block py-1.5 px-2 rounded text-sm {{ request()->routeIs('layanan.pengaduan') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
                             <i class="fas fa-comments mr-2 text-primary text-xs"></i>Informasi &amp; Pengaduan
                         </a>
                     </div>
                 </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                 {{-- Dropdown mobile Informasi --}}
                 <div x-data="{ infoOpen: false }">
                     <button @click="infoOpen = !infoOpen"
@@ -304,19 +246,9 @@
                     </button>
                     <div x-show="infoOpen" class="pl-4 pb-1 space-y-1">
                         <a href="{{ route('berita.index') }}" @click="open=false"
-<<<<<<< HEAD
-                            class="block py-1.5 px-2 rounded {{ request()->routeIs('berita.*') && request()->input('kategori') !== 'Promosi Kesehatan' ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
-                            <i class="fas fa-newspaper mr-2 text-primary text-xs"></i>Berita
-                        </a>
-                        <a href="{{ route('berita.index', ['kategori' => 'Promosi Kesehatan']) }}" @click="open=false"
-                            class="block py-1.5 px-2 rounded {{ request()->input('kategori') === 'Promosi Kesehatan' ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
-                            <i class="fas fa-bullhorn mr-2 text-primary text-xs"></i>Promosi Kesehatan (PKRS)
-                        </a>
-=======
                             class="block py-1.5 px-2 rounded {{ request()->routeIs('berita.*') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
                             <i class="fas fa-newspaper mr-2 text-primary text-xs"></i>Berita
                         </a>
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                         <a href="{{ route('leaflet.index') }}" @click="open=false"
                             class="block py-1.5 px-2 rounded {{ request()->routeIs('leaflet.*') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
                             <i class="fas fa-file-medical mr-2 text-primary text-xs"></i>Leaflet & Poster
@@ -331,10 +263,6 @@
                         </a>
                     </div>
                 </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                 {{-- Dropdown mobile Aplikasi --}}
                 <div x-data="{ appOpen: false }">
                     <button @click="appOpen = !appOpen"
@@ -353,10 +281,6 @@
                         </a>
                     </div>
                 </div>
-<<<<<<< HEAD
-
-=======
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                 <a href="{{ route('download.index') }}" @click="open=false"
                     class="py-2 px-2 rounded {{ request()->routeIs('download.*') ? 'text-primary font-semibold' : 'text-gray-700 hover:text-primary' }}">Download</a>
                 <a href="{{ route('home') }}#kontak" @click="open=false"

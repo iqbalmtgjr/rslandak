@@ -1,29 +1,16 @@
 @extends('layouts.admin')
-<<<<<<< HEAD
-@section('title', 'Kelola Klinik')
-@section('breadcrumb') / <span class="text-gray-700">Klinik</span>@endsection
-
-@section('content')
-<div class="flex items-center justify-between mb-6">
-    <h1 class="text-2xl font-bold text-gray-800">Kelola Klinik</h1>
-=======
 @section('title', 'Kelola Poliklinik')
 @section('breadcrumb') / <span class="text-gray-700">Poliklinik</span>@endsection
 
 @section('content')
 <div class="flex items-center justify-between mb-6">
     <h1 class="text-2xl font-bold text-gray-800">Kelola Poliklinik</h1>
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
     <div class="flex gap-2">
         <a href="{{ route('home') }}" target="_blank" class="border border-gray-300 text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-lg text-sm font-semibold">
             <i class="fas fa-external-link-alt mr-1"></i> Lihat Website
         </a>
         <a href="{{ route('admin.poliklinik.create') }}" class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-lg text-sm font-semibold">
-<<<<<<< HEAD
-            <i class="fas fa-plus mr-1"></i> Tambah Klinik
-=======
             <i class="fas fa-plus mr-1"></i> Tambah Poliklinik
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
         </a>
     </div>
 </div>
@@ -71,11 +58,7 @@
                     <td class="py-3 text-center text-gray-600">{{ $poli->urutan }}</td>
                     <td class="py-3 text-center">
                         <form method="POST" action="{{ route('admin.poliklinik.toggle', $poli->id) }}">
-<<<<<<< HEAD
-                             @csrf
-=======
                             @csrf
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                             <button type="submit" class="text-xs px-3 py-1 rounded-full font-semibold {{ $poli->aktif ? 'bg-green-100 text-green-700' : 'bg-gray-100 text-gray-500' }}">
                                 {{ $poli->aktif ? 'Aktif' : 'Nonaktif' }}
                             </button>
@@ -91,11 +74,7 @@
                                class="text-blue-600 hover:text-blue-800 text-xs px-2 py-1 border border-blue-200 rounded">
                                 Edit
                             </a>
-<<<<<<< HEAD
-                            <form method="POST" action="{{ route('admin.poliklinik.destroy', $poli->id) }}" onsubmit="return confirm('Hapus klinik ini?')">
-=======
                             <form method="POST" action="{{ route('admin.poliklinik.destroy', $poli->id) }}" onsubmit="return confirm('Hapus poliklinik ini?')">
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                                 @csrf @method('DELETE')
                                 <button class="text-red-600 hover:text-red-800 text-xs px-2 py-1 border border-red-200 rounded">Hapus</button>
                             </form>
@@ -106,11 +85,7 @@
                 <tr>
                     <td colspan="7" class="py-12 text-center text-gray-400">
                         <i class="fas fa-clinic-medical text-4xl mb-3 block text-gray-200"></i>
-<<<<<<< HEAD
-                        Belum ada data klinik.
-=======
                         Belum ada data poliklinik.
->>>>>>> 6604c80ceab75fc841c8d2e9ff5dbd5c54a0d5e7
                     </td>
                 </tr>
                 @endforelse
