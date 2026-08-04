@@ -1,0 +1,34 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::create('rssite_heroes', function (Blueprint $table) {
+            $table->id();
+            $table->string('judul');
+            $table->text('sub_judul')->nullable();
+            $table->string('gambar')->nullable();
+            $table->string('tombol_teks', 100)->nullable();
+            $table->string('tombol_url')->nullable();
+            $table->integer('urutan')->default(0);
+            $table->tinyInteger('aktif')->default(1);
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropIfExists('rssite_heroes');
+    }
+};
