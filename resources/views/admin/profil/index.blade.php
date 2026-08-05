@@ -11,7 +11,7 @@
 
     {{-- Tab Navigation --}}
     <div class="flex gap-1 mb-6 bg-gray-100 p-1 rounded-xl w-fit flex-wrap">
-        @foreach([['visi','Visi & Misi','fa-eye'], ['profil','Profil RS','fa-hospital'], ['nilai','Nilai-Nilai','fa-star'], ['direktur','Direktur','fa-user-tie'], ['struktur','Struktur Organisasi','fa-sitemap'], ['maklumat','Maklumat Pelayanan','fa-scroll']] as [$key, $label, $icon])
+        @foreach([['visi','Visi & Misi','fa-eye'], ['profil','Profil RS','fa-hospital'], ['nilai','Nilai-Nilai','fa-star'], ['direktur','Direktur','fa-user-tie'], ['struktur','Struktur Organisasi','fa-sitemap'], ['maklumat','Maklumat Pelayanan','fa-scroll'], ['skm','SKM (Survei Kepuasan)','fa-chart-bar']] as [$key, $label, $icon])
         <button type="button" @click="tab = '{{ $key }}'"
             :class="tab === '{{ $key }}' ? 'bg-green-700 text-white' : 'text-gray-600 hover:bg-gray-200'"
             class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all">
@@ -263,6 +263,30 @@
             <label class="block text-sm font-medium text-gray-700 mb-1">Isi Maklumat</label>
             <textarea name="maklumat_teks" rows="10"
                       class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ $settings['maklumat_teks'] ?? '' }}</textarea>
+        </div>
+    </div>
+
+    {{-- ===================== TAB SKM (SURVEI KEPUASAN MASYARAKAT) ===================== --}}
+    <div x-show="tab === 'skm'" class="bg-white rounded-xl shadow p-6 space-y-5">
+        <h2 class="font-bold text-gray-700 pb-2 border-b">Survei Kepuasan Masyarakat (SKM)</h2>
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Gambar SKM</label>
+            @if(!empty($settings['skm_gambar']))
+            <img id="preview-skm-existing" src="{{ Storage::url($settings['skm_gambar']) }}"
+                 class="w-64 h-40 object-cover rounded-lg mb-2">
+            @endif
+            <img id="preview-skm" class="w-64 h-40 object-cover rounded-lg mb-2 hidden">
+            <input type="file" name="skm_gambar" accept="image/*"
+                   onchange="previewFoto(this,'preview-skm','preview-skm-existing')"
+                   class="text-sm text-gray-600 block">
+            <p class="text-xs text-gray-400 mt-1">Gunakan gambar grafik, diagram, atau poster hasil SKM.</p>
+        </div>
+
+        <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Isi Teks SKM</label>
+            <textarea name="skm_teks" rows="10"
+                      class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ $settings['skm_teks'] ?? '' }}</textarea>
         </div>
     </div>
 

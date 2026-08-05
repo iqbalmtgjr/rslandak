@@ -54,6 +54,10 @@
                             class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors {{ request()->routeIs('profil.maklumat') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
                             <i class="fas fa-scroll w-5 text-primary"></i> Maklumat Pelayanan
                         </a>
+                        <a href="{{ route('profil.skm') }}"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors {{ request()->routeIs('profil.skm') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
+                            <i class="fas fa-chart-bar w-5 text-primary"></i> Survei Kepuasan (SKM)
+                        </a>
                     </div>
                 </div>
 
@@ -199,6 +203,10 @@
                         <a href="{{ route('profil.maklumat') }}" @click="open=false"
                             class="block text-gray-600 hover:text-primary py-1.5 px-2 rounded {{ request()->routeIs('profil.maklumat') ? 'text-primary font-semibold' : '' }}">
                             <i class="fas fa-scroll mr-2 text-primary text-xs"></i>Maklumat Pelayanan
+                        </a>
+                        <a href="{{ route('profil.skm') }}" @click="open=false"
+                            class="block text-gray-600 hover:text-primary py-1.5 px-2 rounded {{ request()->routeIs('profil.skm') ? 'text-primary font-semibold' : '' }}">
+                            <i class="fas fa-chart-bar mr-2 text-primary text-xs"></i>Survei Kepuasan (SKM)
                         </a>
                     </div>
                 </div>

@@ -20,6 +20,7 @@ class ProfilController extends Controller
         'direktur_sambutan',
         'struktur_organisasi_keterangan',
         'maklumat_teks',
+        'skm_teks',
     ];
 
     private array $jsonKeys = [
@@ -34,6 +35,7 @@ class ProfilController extends Controller
         'direktur_foto',
         'struktur_organisasi_gambar',
         'maklumat_gambar',
+        'skm_gambar',
     ];
 
     public function index()
@@ -41,6 +43,7 @@ class ProfilController extends Controller
         $allKeys = array_merge($this->profilKeys, $this->jsonKeys, $this->imageKeys);
         $settings = SiteSetting::whereIn('key', $allKeys)->pluck('value', 'key');
         $settings->put('logo', SiteSetting::get('logo'));
+
         return view('admin.profil.index', compact('settings'));
     }
 
@@ -55,7 +58,7 @@ class ProfilController extends Controller
         SiteSetting::updateOrCreate(['key' => 'profil_misi'], ['value' => json_encode($misi)]);
 
         // profil_rs_nilai: array of objects
-        $nilai = array_values(array_filter($request->input('nilai', []), fn($n) => !empty($n['judul'])));
+        $nilai = array_values(array_filter($request->input('nilai', []), fn ($n) => ! empty($n['judul'])));
         SiteSetting::updateOrCreate(['key' => 'profil_rs_nilai'], ['value' => json_encode($nilai)]);
 
         // direktur_pendidikan
@@ -69,7 +72,9 @@ class ProfilController extends Controller
         foreach ($this->imageKeys as $key) {
             if ($request->hasFile($key)) {
                 $old = SiteSetting::where('key', $key)->value('value');
-                if ($old) Storage::disk('public')->delete($old);
+                if ($old) {
+                    Storage::disk('public')->delete($old);
+                }
                 $path = $request->file($key)->store('rssite/profil', 'public');
                 SiteSetting::updateOrCreate(['key' => $key], ['value' => $path]);
             }

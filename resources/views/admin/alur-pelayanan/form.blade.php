@@ -78,6 +78,10 @@
            :class="preview ? 'border-green-400 bg-green-50' : 'border-gray-300 hover:border-green-400 hover:bg-green-50'"
            @dragover.prevent @drop.prevent="onDrop($event)">
 
+        <input type="file" name="gambar" x-ref="fileInput" class="hidden"
+               accept=".jpg,.jpeg,.png"
+               @change="onFileChange($event)">
+
         <template x-if="preview">
           <div>
             <img :src="preview" class="max-h-48 mx-auto rounded-xl shadow mb-3 object-contain">
@@ -94,12 +98,9 @@
           <div>
             <i class="fas fa-cloud-upload-alt text-5xl text-gray-300 mb-3 block"></i>
             <p class="text-sm text-gray-500 mb-1">Drag &amp; drop atau</p>
-            <label class="cursor-pointer font-semibold text-green-700 hover:underline text-sm">
+            <button type="button" @click="$refs.fileInput.click()" class="cursor-pointer font-semibold text-green-700 hover:underline text-sm focus:outline-none">
               Pilih File Gambar
-              <input type="file" name="gambar" x-ref="fileInput" class="hidden"
-                     accept=".jpg,.jpeg,.png"
-                     @change="onFileChange($event)">
-            </label>
+            </button>
             <p class="text-xs text-gray-400 mt-2">JPG, PNG — Maksimal 5 MB</p>
             <p class="text-xs text-gray-400">Rekomendasikan resolusi minimal 1200px lebar (landscape)</p>
           </div>
