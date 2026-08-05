@@ -1,16 +1,16 @@
 @extends('layouts.admin')
-@section('title', 'Kelola Poliklinik')
-@section('breadcrumb') / <span class="text-gray-700">Poliklinik</span>@endsection
+@section('title', 'Kelola Klinik')
+@section('breadcrumb') / <span class="text-gray-700">Klinik</span>@endsection
 
 @section('content')
 <div class="flex items-center justify-between mb-6">
-    <h1 class="text-2xl font-bold text-gray-800">Kelola Poliklinik</h1>
+    <h1 class="text-2xl font-bold text-gray-800">Kelola Klinik</h1>
     <div class="flex gap-2">
         <a href="{{ route('home') }}" target="_blank" class="border border-gray-300 text-gray-600 hover:bg-gray-50 px-4 py-2 rounded-lg text-sm font-semibold">
             <i class="fas fa-external-link-alt mr-1"></i> Lihat Website
         </a>
         <a href="{{ route('admin.poliklinik.create') }}" class="bg-green-700 hover:bg-green-800 text-white px-4 py-2 rounded-lg text-sm font-semibold">
-            <i class="fas fa-plus mr-1"></i> Tambah Poliklinik
+            <i class="fas fa-plus mr-1"></i> Tambah Klinik
         </a>
     </div>
 </div>
@@ -74,7 +74,7 @@
                                class="text-blue-600 hover:text-blue-800 text-xs px-2 py-1 border border-blue-200 rounded">
                                 Edit
                             </a>
-                            <form method="POST" action="{{ route('admin.poliklinik.destroy', $poli->id) }}" onsubmit="return confirm('Hapus poliklinik ini?')">
+                            <form method="POST" action="{{ route('admin.poliklinik.destroy', $poli->id) }}" onsubmit="return confirm('Hapus klinik ini?')">
                                 @csrf @method('DELETE')
                                 <button class="text-red-600 hover:text-red-800 text-xs px-2 py-1 border border-red-200 rounded">Hapus</button>
                             </form>
@@ -85,7 +85,7 @@
                 <tr>
                     <td colspan="7" class="py-12 text-center text-gray-400">
                         <i class="fas fa-clinic-medical text-4xl mb-3 block text-gray-200"></i>
-                        Belum ada data poliklinik.
+                        Belum ada data klinik.
                     </td>
                 </tr>
                 @endforelse

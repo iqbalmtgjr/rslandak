@@ -173,9 +173,9 @@
           <div class="space-y-4">
 
             <div>
-              <label class="form-label">Poli Tujuan <span class="text-red-500">*</span></label>
+              <label class="form-label">Klinik Tujuan <span class="text-red-500">*</span></label>
               <select name="poli_tujuan" class="form-input @error('poli_tujuan') border-red-400 @enderror">
-                <option value="">-- Pilih Poli Tujuan --</option>
+                <option value="">-- Pilih Klinik Tujuan --</option>
                 @foreach($polikliniks as $poli)
                   <option value="{{ $poli }}" {{ old('poli_tujuan') === $poli ? 'selected' : '' }}>{{ $poli }}</option>
                 @endforeach

@@ -8,7 +8,7 @@ class Fasilitas extends Model
 {
     protected $table = 'rssite_fasilitas';
 
-    protected $fillable = ['nama', 'deskripsi', 'gambar', 'untuk_difabel', 'urutan', 'aktif'];
+    protected $fillable = ['nama', 'deskripsi', 'gambar', 'untuk_difabel', 'kategori', 'urutan', 'aktif'];
 
     protected $casts = ['aktif' => 'boolean', 'untuk_difabel' => 'boolean'];
 

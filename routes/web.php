@@ -37,8 +37,8 @@ Route::get('/download/{id}/unduh', [DownloadController::class, 'unduh'])->name('
 
 // Layanan — Publik
 Route::prefix('layanan')->name('layanan.')->group(function () {
-    Route::get('/poliklinik',        [PublicLayananController::class, 'poliklinik'])->name('poliklinik.index');
-    Route::get('/poliklinik/{slug}', [PublicLayananController::class, 'poliklinikDetail'])->name('poliklinik.show');
+    Route::get('/klinik',        [PublicLayananController::class, 'poliklinik'])->name('poliklinik.index');
+    Route::get('/klinik/{slug}', [PublicLayananController::class, 'poliklinikDetail'])->name('poliklinik.show');
     Route::get('/rawat-inap',        [PublicLayananController::class, 'rawatInap'])->name('rawat-inap');
     Route::get('/pelayanan-24-jam',  [PublicLayananController::class, 'pelayanan24Jam'])->name('pelayanan-24-jam');
     Route::get('/fasilitas',         [PublicLayananController::class, 'fasilitas'])->name('fasilitas');
@@ -101,8 +101,8 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
     Route::get('profil',  [AdminProfilController::class, 'index'])->name('profil.index');
     Route::post('profil', [AdminProfilController::class, 'update'])->name('profil.update');
 
-    // Poliklinik
-    Route::prefix('poliklinik')->name('poliklinik.')->group(function () {
+    // Klinik
+    Route::prefix('klinik')->name('poliklinik.')->group(function () {
         Route::get('/',                  [AdminPoliklinikController::class, 'index'])->name('index');
         Route::get('/create',            [AdminPoliklinikController::class, 'create'])->name('create');
         Route::post('/',                 [AdminPoliklinikController::class, 'store'])->name('store');

@@ -71,7 +71,7 @@
                         class="absolute top-full left-0 mt-2 w-56 bg-white rounded-xl shadow-xl border border-gray-100 py-2 z-50">
                         <a href="{{ route('layanan.poliklinik.index') }}"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors text-sm {{ request()->routeIs('layanan.poliklinik.*') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
-                            <i class="fas fa-clinic-medical w-5 text-primary"></i> Poliklinik
+                            <i class="fas fa-clinic-medical w-5 text-primary"></i> Klinik
                         </a>
                         <a href="{{ route('layanan.rawat-inap') }}"
                             class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors text-sm {{ request()->routeIs('layanan.rawat-inap') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
@@ -213,7 +213,7 @@
                     <div x-show="layananOpen" class="pl-4 pb-1 space-y-1">
                         <a href="{{ route('layanan.poliklinik.index') }}" @click="open=false"
                             class="block py-1.5 px-2 rounded text-sm {{ request()->routeIs('layanan.poliklinik.*') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
-                            <i class="fas fa-clinic-medical mr-2 text-primary text-xs"></i>Poliklinik
+                            <i class="fas fa-clinic-medical mr-2 text-primary text-xs"></i>Klinik
                         </a>
                         <a href="{{ route('layanan.rawat-inap') }}" @click="open=false"
                             class="block py-1.5 px-2 rounded text-sm {{ request()->routeIs('layanan.rawat-inap') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">

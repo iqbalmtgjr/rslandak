@@ -51,7 +51,7 @@ class PoliklinikController extends Controller
         }
 
         Poliklinik::create($data);
-        return redirect()->route('admin.poliklinik.index')->with('success', 'Poliklinik berhasil ditambahkan.');
+        return redirect()->route('admin.poliklinik.index')->with('success', 'Klinik berhasil ditambahkan.');
     }
 
     public function edit(int $id)
@@ -92,7 +92,7 @@ class PoliklinikController extends Controller
         }
 
         $poli->update($data);
-        return redirect()->route('admin.poliklinik.index')->with('success', 'Poliklinik berhasil diperbarui.');
+        return redirect()->route('admin.poliklinik.index')->with('success', 'Klinik berhasil diperbarui.');
     }
 
     public function destroy(int $id)
@@ -100,14 +100,14 @@ class PoliklinikController extends Controller
         $poli = Poliklinik::findOrFail($id);
         if ($poli->tipe_ikon === 'img' && $poli->ikon) Storage::disk('public')->delete($poli->ikon);
         $poli->delete();
-        return redirect()->back()->with('success', 'Poliklinik berhasil dihapus.');
+        return redirect()->back()->with('success', 'Klinik berhasil dihapus.');
     }
 
     public function toggle(int $id)
     {
         $poli = Poliklinik::findOrFail($id);
         $poli->update(['aktif' => !$poli->aktif]);
-        return redirect()->back()->with('success', 'Status poliklinik diperbarui.');
+        return redirect()->back()->with('success', 'Status klinik diperbarui.');
     }
 
     public function manageDokter(int $id)

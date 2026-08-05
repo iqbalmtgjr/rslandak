@@ -34,7 +34,7 @@
                     @if($poli->deskripsi)
                     <div class="text-gray-600 leading-relaxed">{!! $poli->deskripsi !!}</div>
                     @else
-                    <p class="text-gray-400 italic text-sm">Deskripsi poliklinik sedang diperbarui.</p>
+                    <p class="text-gray-400 italic text-sm">Deskripsi klinik sedang diperbarui.</p>
                     @endif
 
                     @if($poli->jumlah_dokter > 0)
@@ -122,7 +122,7 @@
             <div class="p-8 text-center">
                 <h3 class="font-playfair text-2xl font-bold text-white mb-2">Butuh Konsultasi?</h3>
                 <p class="text-green-200 mb-6 text-sm max-w-md mx-auto">
-                    Hubungi kami untuk informasi jadwal dokter, pendaftaran, dan layanan poliklinik {{ $poli->nama }}.
+                    Hubungi kami untuk informasi jadwal dokter, pendaftaran, dan layanan klinik {{ $poli->nama }}.
                 </p>
                 <div class="flex flex-col sm:flex-row gap-3 justify-center">
                     <a href="tel:+62565-2025100"
@@ -132,7 +132,7 @@
                     </a>
                     <a href="{{ route('layanan.poliklinik.index') }}"
                        class="inline-flex items-center justify-center gap-2 px-6 py-2.5 rounded-xl font-semibold text-sm border-2 border-white text-white hover:bg-white hover:text-green-800 transition-all">
-                        <i class="fas fa-th-large"></i> Semua Poliklinik
+                        <i class="fas fa-th-large"></i> Semua Klinik
                     </a>
                 </div>
             </div>
@@ -143,7 +143,7 @@
             <a href="{{ route('layanan.poliklinik.index') }}"
                class="inline-flex items-center gap-2 text-sm font-semibold transition-colors"
                style="color: #2563EB">
-                <i class="fas fa-arrow-left"></i> Kembali ke Daftar Poliklinik
+                <i class="fas fa-arrow-left"></i> Kembali ke Daftar Klinik
             </a>
         </div>
 

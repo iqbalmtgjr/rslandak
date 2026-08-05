@@ -327,7 +327,7 @@
             </a>
             <a href="{{ route('admin.poliklinik.index') }}"
                 class="sidebar-link {{ request()->routeIs('admin.poliklinik.*') ? 'active' : '' }}">
-                <i class="fas fa-clinic-medical w-4"></i> Poliklinik
+                <i class="fas fa-clinic-medical w-4"></i> Klinik
             </a>
             <a href="{{ route('admin.pelayanan24jam.index') }}"
                 class="sidebar-link {{ request()->routeIs('admin.pelayanan24jam.*') ? 'active' : '' }}">

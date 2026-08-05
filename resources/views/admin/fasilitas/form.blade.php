@@ -35,19 +35,22 @@
         </div>
         <div class="grid grid-cols-2 gap-4">
             <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1">Kategori <span class="text-red-500">*</span></label>
+                <select name="kategori" required class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+                    <option value="klinik" {{ old('kategori', $item->kategori) === 'klinik' ? 'selected' : '' }}>Fasilitas Medis / Klinik</option>
+                    <option value="umum" {{ old('kategori', $item->kategori) === 'umum' ? 'selected' : '' }}>Fasilitas Umum</option>
+                    <option value="difabel" {{ old('kategori', $item->kategori) === 'difabel' ? 'selected' : '' }}>Fasilitas Difabel</option>
+                </select>
+            </div>
+            <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Urutan</label>
                 <input type="number" name="urutan" value="{{ old('urutan', $item->urutan ?? 0) }}" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
             </div>
-            <div class="space-y-3 pt-6">
-                <div class="flex items-center gap-3">
-                    <input type="checkbox" name="aktif" id="aktif" value="1" {{ old('aktif', $item->id ? $item->aktif : true) ? 'checked' : '' }} class="w-4 h-4 text-green-600">
-                    <label for="aktif" class="text-sm font-medium text-gray-700">Aktif</label>
-                </div>
-                <div class="flex items-center gap-3">
-                    <input type="checkbox" name="untuk_difabel" id="untuk_difabel" value="1" {{ old('untuk_difabel', $item->untuk_difabel) ? 'checked' : '' }} class="w-4 h-4 text-green-600">
-                    <label for="untuk_difabel" class="text-sm font-medium text-gray-700">Fasilitas Difabel</label>
-                </div>
-            </div>
+        </div>
+
+        <div class="flex items-center gap-3">
+            <input type="checkbox" name="aktif" id="aktif" value="1" {{ old('aktif', $item->id ? $item->aktif : true) ? 'checked' : '' }} class="w-4 h-4 text-green-600">
+            <label for="aktif" class="text-sm font-medium text-gray-700">Aktif</label>
         </div>
 
         <div class="flex gap-3 pt-2">

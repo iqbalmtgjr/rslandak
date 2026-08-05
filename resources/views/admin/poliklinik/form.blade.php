@@ -1,14 +1,14 @@
 @extends('layouts.admin')
-@section('title', isset($poli) && $poli ? 'Edit Poliklinik' : 'Tambah Poliklinik')
+@section('title', isset($poli) && $poli ? 'Edit Klinik' : 'Tambah Klinik')
 @section('breadcrumb')
-    / <a href="{{ route('admin.poliklinik.index') }}" class="hover:text-green-700">Poliklinik</a>
+    / <a href="{{ route('admin.poliklinik.index') }}" class="hover:text-green-700">Klinik</a>
     / <span class="text-gray-700">{{ isset($poli) && $poli ? 'Edit' : 'Tambah' }}</span>
 @endsection
 
 @section('content')
 <div class="max-w-3xl">
     <h1 class="text-2xl font-bold text-gray-800 mb-6">
-        {{ isset($poli) && $poli ? 'Edit Poliklinik: ' . $poli->nama : 'Tambah Poliklinik' }}
+        {{ isset($poli) && $poli ? 'Edit Klinik: ' . $poli->nama : 'Tambah Klinik' }}
     </h1>
 
     @if($errors->any())
@@ -26,7 +26,7 @@
 
         {{-- Nama --}}
         <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Poliklinik <span class="text-red-500">*</span></label>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Nama Klinik <span class="text-red-500">*</span></label>
             <input type="text" name="nama" value="{{ old('nama', $poli->nama ?? '') }}" required
                    class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
         </div>
@@ -89,9 +89,9 @@
         <div>
             <label class="block text-sm font-medium text-gray-700 mb-1">Prosedur Layanan</label>
             <textarea name="prosedur" rows="4"
-                      placeholder="Jelaskan prosedur / alur layanan poliklinik ini..."
+                      placeholder="Jelaskan prosedur / alur layanan klinik ini..."
                       class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ old('prosedur', $poli->prosedur ?? '') }}</textarea>
-            <p class="text-xs text-gray-400 mt-1">Opsional. Akan ditampilkan di halaman detail poliklinik.</p>
+            <p class="text-xs text-gray-400 mt-1">Opsional. Akan ditampilkan di halaman detail klinik.</p>
         </div>
 
         {{-- Urutan & Status --}}

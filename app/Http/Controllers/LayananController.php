@@ -52,13 +52,13 @@ class LayananController extends Controller
 
     public function fasilitas()
     {
-        $items = Fasilitas::aktif()->where('untuk_difabel', false)->orderBy('urutan')->get();
+        $items = Fasilitas::aktif()->whereIn('kategori', ['klinik', 'umum'])->orderBy('urutan')->get();
         return view('layanan.fasilitas', compact('items'));
     }
 
     public function fasilitasDifabel()
     {
-        $items = Fasilitas::aktif()->where('untuk_difabel', true)->orderBy('urutan')->get();
+        $items = Fasilitas::aktif()->where('kategori', 'difabel')->orderBy('urutan')->get();
         return view('layanan.fasilitas-difabel', compact('items'));
     }
 

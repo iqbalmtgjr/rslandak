@@ -1,7 +1,7 @@
 @extends('layouts.admin')
 @section('title', 'Kelola Dokter — ' . $poli->nama)
 @section('breadcrumb')
-    / <a href="{{ route('admin.poliklinik.index') }}" class="hover:text-green-700">Poliklinik</a>
+    / <a href="{{ route('admin.poliklinik.index') }}" class="hover:text-green-700">Klinik</a>
     / <span class="text-gray-700">Dokter: {{ $poli->nama }}</span>
 @endsection
 
@@ -10,7 +10,7 @@
     <div>
         <h1 class="text-2xl font-bold text-gray-800">Kelola Dokter</h1>
         <p class="text-sm text-gray-500 mt-0.5">
-            Poliklinik: <span class="font-semibold text-green-700">{{ $poli->nama }}</span>
+            Klinik: <span class="font-semibold text-green-700">{{ $poli->nama }}</span>
         </p>
     </div>
     <a href="{{ route('admin.poliklinik.index') }}"

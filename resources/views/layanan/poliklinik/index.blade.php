@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
-@section('title', 'Poliklinik — RSUD Landak')
+@section('title', 'Klinik — RSUD Landak')
 
 @section('content')
 
-@include('partials.page-header', ['judul' => 'Poliklinik', 'parent' => 'Layanan'])
+@include('partials.page-header', ['judul' => 'Klinik', 'parent' => 'Layanan'])
 
 <section class="py-14 bg-gray-50 min-h-screen">
     <div class="container mx-auto px-4 max-w-7xl">
 
         {{-- Intro --}}
         <div class="text-center mb-10 reveal">
-            <h2 class="font-playfair text-2xl font-bold text-gray-800 mb-2">Daftar Poliklinik</h2>
+            <h2 class="font-playfair text-2xl font-bold text-gray-800 mb-2">Daftar Klinik</h2>
             <p class="text-gray-500 max-w-xl mx-auto text-sm">
-                RSUD Landak menyediakan berbagai poliklinik spesialis untuk memenuhi kebutuhan kesehatan masyarakat Landak dan sekitarnya.
+                RSUD Landak menyediakan berbagai klinik spesialis untuk memenuhi kebutuhan kesehatan masyarakat Landak dan sekitarnya.
             </p>
         </div>
 
@@ -23,7 +23,7 @@
             <div class="w-24 h-24 rounded-full flex items-center justify-center mx-auto mb-4" style="background: linear-gradient(135deg, #e8f5e9, #c8e6c9)">
                 <i class="fas fa-clinic-medical text-4xl" style="color: #2563EB"></i>
             </div>
-            <p class="text-gray-500 text-lg font-medium">Informasi poliklinik sedang diperbarui.</p>
+            <p class="text-gray-500 text-lg font-medium">Informasi klinik sedang diperbarui.</p>
             <p class="text-gray-400 text-sm mt-1">Silakan hubungi kami untuk informasi lebih lanjut.</p>
         </div>
         @else

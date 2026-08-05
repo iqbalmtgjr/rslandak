@@ -39,9 +39,13 @@
                     </td>
                     <td class="py-3 font-medium text-gray-800">{{ $item->nama }}</td>
                     <td class="py-3">
-                        <span class="text-xs px-2 py-1 rounded-full font-semibold {{ $item->untuk_difabel ? 'bg-amber-100 text-amber-700' : 'bg-blue-100 text-blue-700' }}">
-                            {{ $item->untuk_difabel ? 'Difabel' : 'Umum' }}
-                        </span>
+                        @if($item->kategori === 'difabel')
+                            <span class="text-xs px-2 py-1 rounded-full font-semibold bg-amber-100 text-amber-700">Difabel</span>
+                        @elseif($item->kategori === 'umum')
+                            <span class="text-xs px-2 py-1 rounded-full font-semibold bg-blue-100 text-blue-700">Umum</span>
+                        @else
+                            <span class="text-xs px-2 py-1 rounded-full font-semibold bg-emerald-100 text-emerald-700">Medis / Klinik</span>
+                        @endif
                     </td>
                     <td class="py-3 text-gray-600">{{ $item->urutan }}</td>
                     <td class="py-3">

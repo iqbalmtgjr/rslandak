@@ -6,7 +6,7 @@
 
 @include('partials.page-header', ['judul' => 'Fasilitas', 'parent' => 'Layanan'])
 
-<section class="py-14 bg-gray-50 min-h-screen">
+<section class="py-14 bg-gray-50 min-h-screen" x-data="{ activeTab: 'semua' }">
     <div class="container mx-auto px-4 max-w-5xl">
 
         <div class="text-center mb-10 reveal">
@@ -17,8 +17,28 @@
             </p>
         </div>
 
+        {{-- Filter Tabs --}}
+        <div class="flex justify-center gap-2 mb-8 reveal">
+            <button @click="activeTab = 'semua'" 
+                    :class="activeTab === 'semua' ? 'bg-primary text-white border-primary shadow-sm' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
+                    class="px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
+                Semua
+            </button>
+            <button @click="activeTab = 'klinik'" 
+                    :class="activeTab === 'klinik' ? 'bg-primary text-white border-primary shadow-sm' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
+                    class="px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
+                Fasilitas Medis / Klinik
+            </button>
+            <button @click="activeTab = 'umum'" 
+                    :class="activeTab === 'umum' ? 'bg-primary text-white border-primary shadow-sm' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
+                    class="px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
+                Fasilitas Umum
+            </button>
+        </div>
+
         @forelse($items as $item)
-        <div class="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all overflow-hidden mb-6 reveal">
+        <div x-show="activeTab === 'semua' || activeTab === '{{ $item->kategori }}'" 
+             class="bg-white rounded-2xl shadow-sm hover:shadow-lg transition-all overflow-hidden mb-6 reveal">
             <div class="grid grid-cols-1 md:grid-cols-5">
                 {{-- Gambar --}}
                 <div class="md:col-span-2 h-56 md:h-auto min-h-[14rem]">

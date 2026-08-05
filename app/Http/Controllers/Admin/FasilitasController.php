@@ -13,9 +13,10 @@ class FasilitasController extends Controller
     {
         $query = Fasilitas::query();
         if ($request->search) {
-            $query->where('nama', 'like', '%' . $request->search . '%');
+            $query->where('nama', 'like', '%'.$request->search.'%');
         }
         $fasilitas = $query->orderBy('urutan')->paginate(10)->withQueryString();
+
         return view('admin.fasilitas.index', compact('fasilitas'));
     }
 
@@ -30,6 +31,7 @@ class FasilitasController extends Controller
             'nama' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'gambar' => 'nullable|image|max:2048',
+            'kategori' => 'required|string|in:klinik,umum,difabel',
             'urutan' => 'nullable|integer',
         ]);
 
@@ -37,7 +39,8 @@ class FasilitasController extends Controller
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi,
             'gambar' => $this->handleImageUpload($request, 'gambar'),
-            'untuk_difabel' => $request->boolean('untuk_difabel'),
+            'kategori' => $request->kategori,
+            'untuk_difabel' => $request->kategori === 'difabel',
             'urutan' => $request->urutan ?? 0,
             'aktif' => $request->boolean('aktif', true),
         ]);
@@ -48,6 +51,7 @@ class FasilitasController extends Controller
     public function edit(int $id)
     {
         $item = Fasilitas::findOrFail($id);
+
         return view('admin.fasilitas.form', compact('item'));
     }
 
@@ -59,6 +63,7 @@ class FasilitasController extends Controller
             'nama' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'gambar' => 'nullable|image|max:2048',
+            'kategori' => 'required|string|in:klinik,umum,difabel',
             'urutan' => 'nullable|integer',
         ]);
 
@@ -66,7 +71,8 @@ class FasilitasController extends Controller
             'nama' => $request->nama,
             'deskripsi' => $request->deskripsi,
             'gambar' => $this->handleImageUpload($request, 'gambar', $item->gambar),
-            'untuk_difabel' => $request->boolean('untuk_difabel'),
+            'kategori' => $request->kategori,
+            'untuk_difabel' => $request->kategori === 'difabel',
             'urutan' => $request->urutan ?? 0,
             'aktif' => $request->boolean('aktif', true),
         ]);
@@ -77,24 +83,32 @@ class FasilitasController extends Controller
     public function destroy(int $id)
     {
         $item = Fasilitas::findOrFail($id);
-        if ($item->gambar) Storage::disk('public')->delete($item->gambar);
+        if ($item->gambar) {
+            Storage::disk('public')->delete($item->gambar);
+        }
         $item->delete();
+
         return redirect()->route('admin.fasilitas.index')->with('success', 'Fasilitas berhasil dihapus.');
     }
 
     public function toggle(int $id)
     {
         $item = Fasilitas::findOrFail($id);
-        $item->update(['aktif' => !$item->aktif]);
+        $item->update(['aktif' => ! $item->aktif]);
+
         return redirect()->back()->with('success', 'Status fasilitas berhasil diubah.');
     }
 
     private function handleImageUpload($request, $field, $oldPath = null): ?string
     {
         if ($request->hasFile($field)) {
-            if ($oldPath) Storage::disk('public')->delete($oldPath);
+            if ($oldPath) {
+                Storage::disk('public')->delete($oldPath);
+            }
+
             return $request->file($field)->store('rssite/images', 'public');
         }
+
         return $oldPath;
     }
 }
