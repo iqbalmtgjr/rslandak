@@ -37,9 +37,10 @@
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Kategori <span class="text-red-500">*</span></label>
                 <select name="kategori" required class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
-                    <option value="klinik" {{ old('kategori', $item->kategori) === 'klinik' ? 'selected' : '' }}>Fasilitas Medis / Klinik</option>
-                    <option value="umum" {{ old('kategori', $item->kategori) === 'umum' ? 'selected' : '' }}>Fasilitas Umum</option>
+                    <option value="klinik" {{ old('kategori', $item->kategori) === 'klinik' ? 'selected' : '' }}>Fasilitas Klinik</option>
+                    <option value="parkir" {{ old('kategori', $item->kategori) === 'parkir' ? 'selected' : '' }}>Fasilitas Parkir & Penunjang</option>
                     <option value="difabel" {{ old('kategori', $item->kategori) === 'difabel' ? 'selected' : '' }}>Fasilitas Difabel</option>
+                    <option value="prioritas" {{ old('kategori', $item->kategori) === 'prioritas' ? 'selected' : '' }}>Fasilitas Prioritas</option>
                 </select>
             </div>
             <div>

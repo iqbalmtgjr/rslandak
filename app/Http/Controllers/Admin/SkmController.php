@@ -21,9 +21,21 @@ class SkmController extends Controller
         return view('admin.skm.index', compact('skms'));
     }
 
+    public function getNextUrutan(Request $request)
+    {
+        $tahun = $request->input('tahun', date('Y'));
+        $max = Skm::where('tahun', $tahun)->max('urutan');
+
+        return response()->json(['next_urutan' => ($max ?: 0) + 1]);
+    }
+
     public function create()
     {
-        return view('admin.skm.form', ['skm' => new Skm]);
+        $skm = new Skm;
+        $skm->tahun = date('Y');
+        $skm->urutan = (Skm::where('tahun', $skm->tahun)->max('urutan') ?: 0) + 1;
+
+        return view('admin.skm.form', compact('skm'));
     }
 
     public function store(Request $request)

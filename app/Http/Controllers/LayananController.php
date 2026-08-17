@@ -7,6 +7,8 @@ use App\Models\Kamar;
 use App\Models\Pelayanan24Jam;
 use App\Models\Poliklinik;
 use App\Models\SiteSetting;
+use App\Models\Saran;
+use Illuminate\Http\Request;
 
 class LayananController extends Controller
 {
@@ -52,7 +54,7 @@ class LayananController extends Controller
 
     public function fasilitas()
     {
-        $items = Fasilitas::aktif()->whereIn('kategori', ['klinik', 'umum'])->orderBy('urutan')->get();
+        $items = Fasilitas::aktif()->whereIn('kategori', ['klinik', 'parkir', 'difabel', 'prioritas'])->orderBy('urutan')->get();
         return view('layanan.fasilitas', compact('items'));
     }
 
@@ -65,5 +67,19 @@ class LayananController extends Controller
     public function pengaduan()
     {
         return view('layanan.pengaduan');
+    }
+
+    public function submitSaran(Request $request)
+    {
+        $request->validate([
+            'tipe' => 'required|string|in:like,dislike',
+        ]);
+
+        Saran::create([
+            'tipe' => $request->tipe,
+            'pesan' => 'Vote dari halaman pengaduan',
+        ]);
+
+        return response()->json(['success' => true]);
     }
 }

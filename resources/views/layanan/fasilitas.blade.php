@@ -18,21 +18,31 @@
         </div>
 
         {{-- Filter Tabs --}}
-        <div class="flex justify-center gap-2 mb-8 reveal">
+        <div class="flex justify-center gap-2 mb-8 flex-wrap reveal">
             <button @click="activeTab = 'semua'" 
                     :class="activeTab === 'semua' ? 'bg-primary text-white border-primary shadow-sm' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
-                    class="px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
                 Semua
             </button>
             <button @click="activeTab = 'klinik'" 
                     :class="activeTab === 'klinik' ? 'bg-primary text-white border-primary shadow-sm' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
-                    class="px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
-                Fasilitas Medis / Klinik
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
+                Fasilitas Klinik
             </button>
-            <button @click="activeTab = 'umum'" 
-                    :class="activeTab === 'umum' ? 'bg-primary text-white border-primary shadow-sm' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
-                    class="px-5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
-                Fasilitas Umum
+            <button @click="activeTab = 'parkir'" 
+                    :class="activeTab === 'parkir' ? 'bg-primary text-white border-primary shadow-sm' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
+                Fasilitas Parkir & Penunjang
+            </button>
+            <button @click="activeTab = 'difabel'" 
+                    :class="activeTab === 'difabel' ? 'bg-primary text-white border-primary shadow-sm' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
+                Fasilitas Difabel
+            </button>
+            <button @click="activeTab = 'prioritas'" 
+                    :class="activeTab === 'prioritas' ? 'bg-primary text-white border-primary shadow-sm' : 'bg-white text-gray-600 border border-gray-200 hover:bg-gray-50'"
+                    class="px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all">
+                Fasilitas Prioritas
             </button>
         </div>
 

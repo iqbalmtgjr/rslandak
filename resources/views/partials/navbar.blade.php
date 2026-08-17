@@ -127,6 +127,10 @@
                             class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors {{ request()->routeIs('informasi.dokter') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
                             <i class="fas fa-user-md w-5 text-primary"></i> Dokter
                         </a>
+                        <a href="{{ route('informasi.pkrs') }}"
+                            class="flex items-center gap-3 px-4 py-3 hover:bg-blue-50 hover:text-primary transition-colors {{ request()->routeIs('informasi.pkrs') ? 'text-primary bg-blue-50 font-semibold' : 'text-gray-700' }}">
+                            <i class="fas fa-heartbeat w-5 text-primary"></i> Promosi Kesehatan (PKRS)
+                        </a>
                     </div>
                 </div>
                 {{-- Dropdown Aplikasi --}}
@@ -268,6 +272,10 @@
                         <a href="{{ route('informasi.dokter') }}" @click="open=false"
                             class="block py-1.5 px-2 rounded {{ request()->routeIs('informasi.dokter') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
                             <i class="fas fa-user-md mr-2 text-primary text-xs"></i>Dokter
+                        </a>
+                        <a href="{{ route('informasi.pkrs') }}" @click="open=false"
+                            class="block py-1.5 px-2 rounded {{ request()->routeIs('informasi.pkrs') ? 'text-primary font-semibold' : 'text-gray-600 hover:text-primary' }}">
+                            <i class="fas fa-heartbeat mr-2 text-primary text-xs"></i>Promosi Kesehatan (PKRS)
                         </a>
                     </div>
                 </div>

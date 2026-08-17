@@ -19,7 +19,7 @@
         <div class="grid grid-cols-3 gap-4">
             <div class="col-span-1">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Tahun <span class="text-red-500">*</span></label>
-                <input type="text" name="tahun" value="{{ old('tahun', $skm->tahun) }}" placeholder="2026" required maxlength="4" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+                <input type="text" name="tahun" id="tahun" value="{{ old('tahun', $skm->tahun) }}" placeholder="2026" required maxlength="4" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
             </div>
             <div class="col-span-2">
                 <label class="block text-sm font-medium text-gray-700 mb-1">Judul Penilaian <span class="text-red-500">*</span></label>
@@ -40,7 +40,7 @@
         <div class="grid grid-cols-2 gap-4">
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1">Urutan</label>
-                <input type="number" name="urutan" value="{{ old('urutan', $skm->urutan ?? 0) }}" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
+                <input type="number" name="urutan" id="urutan" value="{{ old('urutan', $skm->urutan) }}" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
             </div>
             <div class="flex items-center gap-3 pt-6">
                 <input type="checkbox" name="aktif" id="aktif" value="1" {{ old('aktif', $skm->id ? $skm->aktif : true) ? 'checked' : '' }} class="w-4 h-4 text-green-600">
@@ -66,5 +66,26 @@ function previewImg(input) {
         reader.readAsDataURL(input.files[0]);
     }
 }
+
+@if(!$skm->id)
+document.addEventListener('DOMContentLoaded', function() {
+    const tahunInput = document.getElementById('tahun');
+    const urutanInput = document.getElementById('urutan');
+    
+    if (tahunInput && urutanInput) {
+        tahunInput.addEventListener('change', function() {
+            const tahun = this.value;
+            if (tahun && tahun.length === 4) {
+                fetch(`{{ route('admin.skm.next-urutan') }}?tahun=${tahun}`)
+                    .then(response => response.json())
+                    .then(data => {
+                        urutanInput.value = data.next_urutan;
+                    })
+                    .catch(err => console.error('Error fetching next urutan:', err));
+            }
+        });
+    }
+});
+@endif
 </script>
 @endsection

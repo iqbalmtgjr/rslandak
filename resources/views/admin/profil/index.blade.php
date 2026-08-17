@@ -11,7 +11,7 @@
 
     {{-- Tab Navigation --}}
     <div class="flex gap-1 mb-6 bg-gray-100 p-1 rounded-xl w-fit flex-wrap">
-        @foreach([['visi','Visi & Misi','fa-eye'], ['profil','Profil RS','fa-hospital'], ['nilai','Nilai-Nilai','fa-star'], ['direktur','Direktur','fa-user-tie'], ['struktur','Struktur Organisasi','fa-sitemap'], ['maklumat','Maklumat Pelayanan','fa-scroll'], ['skm','SKM (Survei Kepuasan)','fa-chart-bar']] as [$key, $label, $icon])
+        @foreach([['visi','Visi & Misi','fa-eye'], ['profil','Profil RS','fa-hospital'], ['nilai','Nilai-Nilai','fa-star'], ['direktur','Direktur','fa-user-tie'], ['maklumat','Maklumat Pelayanan','fa-scroll']] as [$key, $label, $icon])
         <button type="button" @click="tab = '{{ $key }}'"
             :class="tab === '{{ $key }}' ? 'bg-green-700 text-white' : 'text-gray-600 hover:bg-gray-200'"
             class="flex items-center gap-2 px-4 py-2 rounded-lg text-sm font-medium transition-all">
@@ -218,75 +218,21 @@
         </div>
     </div>
 
-    {{-- ===================== TAB STRUKTUR ORGANISASI ===================== --}}
-    <div x-show="tab === 'struktur'" class="bg-white rounded-xl shadow p-6 space-y-5">
-        <h2 class="font-bold text-gray-700 pb-2 border-b">Struktur Organisasi</h2>
-
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Gambar Bagan Struktur</label>
-            @if(!empty($settings['struktur_organisasi_gambar']))
-            <img id="preview-struktur-existing" src="{{ Storage::url($settings['struktur_organisasi_gambar']) }}"
-                 class="w-full max-w-lg rounded-lg border border-gray-200 mb-2">
-            @endif
-            <img id="preview-struktur" class="w-full max-w-lg rounded-lg border border-gray-200 mb-2 hidden">
-            <input type="file" name="struktur_organisasi_gambar" accept="image/*"
-                   onchange="previewFoto(this,'preview-struktur','preview-struktur-existing')"
-                   class="text-sm text-gray-600 block">
-            <p class="text-xs text-gray-400 mt-1">Gunakan gambar landscape resolusi tinggi agar teks bagan terbaca. Maks 2MB.</p>
-        </div>
-
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Keterangan (opsional)</label>
-            <textarea name="struktur_organisasi_keterangan" rows="5"
-                      class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ $settings['struktur_organisasi_keterangan'] ?? '' }}</textarea>
-        </div>
-    </div>
-
     {{-- ===================== TAB MAKLUMAT PELAYANAN ===================== --}}
     <div x-show="tab === 'maklumat'" class="bg-white rounded-xl shadow p-6 space-y-5">
         <h2 class="font-bold text-gray-700 pb-2 border-b">Maklumat Pelayanan</h2>
 
         <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Gambar Pendamping</label>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Gambar Maklumat (Portrait / A4)</label>
             @if(!empty($settings['maklumat_gambar']))
             <img id="preview-maklumat-existing" src="{{ Storage::url($settings['maklumat_gambar']) }}"
-                 class="w-64 h-40 object-cover rounded-lg mb-2">
+                 class="w-64 aspect-[210/297] object-contain rounded-lg border border-gray-200 mb-2 bg-gray-50">
             @endif
-            <img id="preview-maklumat" class="w-64 h-40 object-cover rounded-lg mb-2 hidden">
+            <img id="preview-maklumat" class="w-64 aspect-[210/297] object-contain rounded-lg border border-gray-200 mb-2 hidden bg-gray-50">
             <input type="file" name="maklumat_gambar" accept="image/*"
                    onchange="previewFoto(this,'preview-maklumat','preview-maklumat-existing')"
                    class="text-sm text-gray-600 block">
-            <p class="text-xs text-gray-400 mt-1">Kosongkan untuk memakai Foto Gedung RS dari tab Profil RS.</p>
-        </div>
-
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Isi Maklumat</label>
-            <textarea name="maklumat_teks" rows="10"
-                      class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ $settings['maklumat_teks'] ?? '' }}</textarea>
-        </div>
-    </div>
-
-    {{-- ===================== TAB SKM (SURVEI KEPUASAN MASYARAKAT) ===================== --}}
-    <div x-show="tab === 'skm'" class="bg-white rounded-xl shadow p-6 space-y-5">
-        <h2 class="font-bold text-gray-700 pb-2 border-b">Survei Kepuasan Masyarakat (SKM)</h2>
-
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Gambar SKM</label>
-            @if(!empty($settings['skm_gambar']))
-            <img id="preview-skm-existing" src="{{ Storage::url($settings['skm_gambar']) }}"
-                 class="w-64 h-40 object-cover rounded-lg mb-2">
-            @endif
-            <img id="preview-skm" class="w-64 h-40 object-cover rounded-lg mb-2 hidden">
-            <input type="file" name="skm_gambar" accept="image/*"
-                   onchange="previewFoto(this,'preview-skm','preview-skm-existing')"
-                   class="text-sm text-gray-600 block">
-            <p class="text-xs text-gray-400 mt-1">Gunakan gambar grafik, diagram, atau poster hasil SKM.</p>
-        </div>
-
-        <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1">Isi Teks SKM</label>
-            <textarea name="skm_teks" rows="10"
-                      class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">{{ $settings['skm_teks'] ?? '' }}</textarea>
+            <p class="text-xs text-gray-400 mt-1">Upload gambar portrait (A4).</p>
         </div>
     </div>
 

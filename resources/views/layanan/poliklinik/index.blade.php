@@ -13,7 +13,7 @@
         <div class="text-center mb-10 reveal">
             <h2 class="font-playfair text-2xl font-bold text-gray-800 mb-2">Daftar Klinik</h2>
             <p class="text-gray-500 max-w-xl mx-auto text-sm">
-                RSUD Landak menyediakan berbagai klinik spesialis untuk memenuhi kebutuhan kesehatan masyarakat Landak dan sekitarnya.
+                RSUD Landak menyediakan berbagai klinik untuk memenuhi kebutuhan kesehatan masyarakat Landak dan sekitarnya.
             </p>
         </div>
 

@@ -91,7 +91,15 @@
                 <input type="text" name="pengaduan_wa" value="{{ $settings['pengaduan_wa'] ?? '' }}" placeholder="628xxxxxxxxxx" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">
                 <p class="text-xs text-gray-400 mt-1">Format: 62xxxxxxxxxx (tanpa + dan spasi). Kosongkan untuk menyembunyikan.</p>
             </div>
-            <div></div>
+            <div>
+                <label class="block text-sm font-medium text-gray-700 mb-1"><i class="fas fa-qrcode text-primary mr-1"></i> Barcode / QR Code Pengaduan</label>
+                @if(!empty($settings['pengaduan_barcode']))
+                <img id="preview-barcode-existing" src="{{ Storage::url($settings['pengaduan_barcode']) }}" class="w-24 h-24 object-contain mb-2 border rounded-lg p-1 bg-gray-50">
+                @endif
+                <img id="preview-barcode" class="w-24 h-24 object-contain mb-2 border rounded-lg p-1 bg-gray-50 hidden">
+                <input type="file" name="pengaduan_barcode" accept="image/*" onchange="previewFoto(this,'preview-barcode','preview-barcode-existing')" class="text-sm text-gray-600 block">
+                <p class="text-xs text-gray-400 mt-1">Upload gambar barcode/QR Code aduan (misalnya lapor/survei). Format JPG/PNG.</p>
+            </div>
             <div>
                 <label class="block text-sm font-medium text-gray-700 mb-1"><i class="fas fa-clipboard-check text-primary mr-1"></i> URL SIPPN</label>
                 <input type="url" name="sippn_url" value="{{ $settings['sippn_url'] ?? '' }}" placeholder="https://sippn.menpan.go.id" class="w-full border border-gray-300 rounded-lg px-3 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-green-500">

@@ -17,7 +17,7 @@ class SiteSettingController extends Controller
 
     public function update(Request $request)
     {
-        $imageKeys = ['logo', 'favicon', 'sambutan_direktur_foto'];
+        $imageKeys = ['logo', 'favicon', 'sambutan_direktur_foto', 'pengaduan_barcode'];
 
         foreach ($request->except(['_token', '_method']) as $key => $value) {
             if (in_array($key, $imageKeys)) {

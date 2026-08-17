@@ -31,7 +31,7 @@ class FasilitasController extends Controller
             'nama' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'gambar' => 'nullable|image|max:2048',
-            'kategori' => 'required|string|in:klinik,umum,difabel',
+            'kategori' => 'required|string|in:klinik,parkir,difabel,prioritas',
             'urutan' => 'nullable|integer',
         ]);
 
@@ -63,7 +63,7 @@ class FasilitasController extends Controller
             'nama' => 'required|string|max:255',
             'deskripsi' => 'required|string',
             'gambar' => 'nullable|image|max:2048',
-            'kategori' => 'required|string|in:klinik,umum,difabel',
+            'kategori' => 'required|string|in:klinik,parkir,difabel,prioritas',
             'urutan' => 'nullable|integer',
         ]);
 

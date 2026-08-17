@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Admin\AlurPelayananController as AdminAlurPelayananController;
 use App\Http\Controllers\Admin\BeritaController as AdminBeritaController;
+use App\Http\Controllers\Admin\BidangController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\DokterController;
 use App\Http\Controllers\Admin\DownloadController as AdminDownloadController;
@@ -12,9 +13,12 @@ use App\Http\Controllers\Admin\LayananController;
 use App\Http\Controllers\Admin\LeafletController as AdminLeafletController;
 use App\Http\Controllers\Admin\Pelayanan24JamController as AdminPelayanan24JamController;
 use App\Http\Controllers\Admin\PendaftaranController as AdminPendaftaranController;
+use App\Http\Controllers\Admin\PkrsController;
 use App\Http\Controllers\Admin\PoliklinikController as AdminPoliklinikController;
 use App\Http\Controllers\Admin\ProfilController as AdminProfilController;
 use App\Http\Controllers\Admin\SiteSettingController;
+use App\Http\Controllers\Admin\SkmController;
+use App\Http\Controllers\Admin\StrukturOrganisasiController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\BeritaController;
 use App\Http\Controllers\DownloadController;
@@ -44,6 +48,7 @@ Route::prefix('layanan')->name('layanan.')->group(function () {
     Route::get('/fasilitas', [PublicLayananController::class, 'fasilitas'])->name('fasilitas');
     Route::get('/fasilitas-difabel', [PublicLayananController::class, 'fasilitasDifabel'])->name('fasilitas-difabel');
     Route::get('/pengaduan', [PublicLayananController::class, 'pengaduan'])->name('pengaduan');
+    Route::post('/pengaduan/vote', [PublicLayananController::class, 'submitSaran'])->name('saran.vote');
 });
 
 // Leaflet & Poster — Publik
@@ -53,6 +58,8 @@ Route::get('/leaflet-poster', [LeafletController::class, 'index'])->name('leafle
 Route::prefix('informasi')->name('informasi.')->group(function () {
     Route::get('/alur-pelayanan', [InformasiController::class, 'alurPelayanan'])->name('alur-pelayanan');
     Route::get('/dokter', [InformasiController::class, 'dokter'])->name('dokter');
+    Route::get('/pkrs', [InformasiController::class, 'pkrs'])->name('pkrs');
+    Route::get('/pkrs/{slug}', [InformasiController::class, 'pkrsShow'])->name('pkrs.show');
 });
 
 // Profil RS — Publik
@@ -101,6 +108,21 @@ Route::prefix('admin')->middleware('auth')->name('admin.')->group(function () {
 
     Route::get('profil', [AdminProfilController::class, 'index'])->name('profil.index');
     Route::post('profil', [AdminProfilController::class, 'update'])->name('profil.update');
+
+    // Bidang & Struktur Organisasi
+    Route::resource('bidang', BidangController::class);
+    Route::post('bidang/reorder', [BidangController::class, 'reorder'])->name('bidang.reorder');
+    Route::get('struktur/next-urutan', [StrukturOrganisasiController::class, 'getNextUrutan'])->name('struktur.next-urutan');
+    Route::resource('struktur', StrukturOrganisasiController::class);
+    Route::post('struktur/{struktur}/toggle', [StrukturOrganisasiController::class, 'toggle'])->name('struktur.toggle');
+    Route::post('struktur/reorder', [StrukturOrganisasiController::class, 'reorder'])->name('struktur.reorder');
+
+    Route::get('skm/next-urutan', [SkmController::class, 'getNextUrutan'])->name('skm.next-urutan');
+    Route::resource('skm', SkmController::class);
+    Route::post('skm/{skm}/toggle', [SkmController::class, 'toggle'])->name('skm.toggle');
+
+    Route::resource('pkrs', PkrsController::class);
+    Route::post('pkrs/{id}/toggle', [PkrsController::class, 'toggle'])->name('pkrs.toggle');
 
     // Klinik
     Route::prefix('klinik')->name('poliklinik.')->group(function () {

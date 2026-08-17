@@ -301,6 +301,18 @@
                 class="sidebar-link {{ request()->routeIs('admin.profil.*') ? 'active' : '' }}">
                 <i class="fas fa-id-card w-4"></i> Profil RS
             </a>
+            <a href="{{ route('admin.bidang.index') }}"
+                class="sidebar-link {{ request()->routeIs('admin.bidang.*') ? 'active' : '' }}">
+                <i class="fas fa-layer-group w-4"></i> Bidang Struktur
+            </a>
+            <a href="{{ route('admin.struktur.index') }}"
+                class="sidebar-link {{ request()->routeIs('admin.struktur.*') ? 'active' : '' }}">
+                <i class="fas fa-sitemap w-4"></i> Struktur Organisasi
+            </a>
+            <a href="{{ route('admin.skm.index') }}"
+                class="sidebar-link {{ request()->routeIs('admin.skm.*') ? 'active' : '' }}">
+                <i class="fas fa-chart-bar w-4"></i> Hasil SKM
+            </a>
             <a href="{{ route('admin.hero.index') }}"
                 class="sidebar-link {{ request()->routeIs('admin.hero.*') ? 'active' : '' }}">
                 <i class="fas fa-images w-4"></i> Hero / Slider
@@ -316,6 +328,10 @@
             <a href="{{ route('admin.berita.index') }}"
                 class="sidebar-link {{ request()->routeIs('admin.berita.*') ? 'active' : '' }}">
                 <i class="fas fa-newspaper w-4"></i> Berita
+            </a>
+            <a href="{{ route('admin.pkrs.index') }}"
+                class="sidebar-link {{ request()->routeIs('admin.pkrs.*') ? 'active' : '' }}">
+                <i class="fas fa-heartbeat w-4"></i> Promosi Kesehatan (PKRS)
             </a>
             <a href="{{ route('admin.kamar.index') }}"
                 class="sidebar-link {{ request()->routeIs('admin.kamar.*') ? 'active' : '' }}">

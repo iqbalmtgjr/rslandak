@@ -58,13 +58,56 @@
             </a>
             @endif
 
+            @if(!empty($settings['pengaduan_barcode']))
+            <div class="bg-white rounded-2xl shadow-sm p-6 flex items-start gap-4 reveal">
+                <div class="w-16 h-16 border rounded-xl p-1 bg-gray-50 flex-shrink-0 flex items-center justify-center">
+                    <img src="{{ Storage::url($settings['pengaduan_barcode']) }}" alt="QR Code Pengaduan" class="w-full h-full object-contain">
+                </div>
+                <div>
+                    <div class="font-bold text-gray-800 mb-1">Scan Barcode Lapor</div>
+                    <div class="text-gray-500 text-sm">Imbas barcode untuk masuk ke kanal pengaduan eksternal yang saat ini berjalan.</div>
+                </div>
+            </div>
+            @else
             <div class="bg-white rounded-2xl shadow-sm p-6 flex items-start gap-4 reveal">
                 <div class="w-12 h-12 rounded-xl bg-gray-100 flex items-center justify-center flex-shrink-0">
                     <i class="fas fa-inbox text-xl text-gray-600"></i>
                 </div>
                 <div>
-                    <div class="font-bold text-gray-800 mb-1">Kotak Saran</div>
-                    <div class="text-gray-500 text-sm">Tersedia di area pendaftaran dan ruang tunggu rumah sakit.</div>
+                    <div class="font-bold text-gray-800 mb-1">Kotak Saran Fisik</div>
+                    <div class="text-gray-500 text-sm">Tersedia di area pendaftaran dan ruang tunggu RSUD Landak.</div>
+                </div>
+            </div>
+            @endif
+        </div>
+
+        {{-- KOTAK SARAN DIGITAL (LIKE & DISLIKE VOTE) --}}
+        <div class="bg-white rounded-2xl shadow-sm p-8 text-center reveal mb-10 border border-gray-100">
+            <h3 class="font-playfair text-xl md:text-2xl font-bold text-gray-800 mb-2">Kotak Saran Digital</h3>
+            <p class="text-gray-500 text-sm max-w-lg mx-auto mb-6">
+                Bagaimana penilaian Anda terhadap kualitas pelayanan {{ $settings['nama_rs'] ?? 'RSUD Landak' }}? Sampaikan penilaian Anda secara instan di bawah ini.
+            </p>
+            
+            <div x-data="{ voted: false, status: '' }" class="flex flex-col items-center">
+                <div class="flex gap-4 justify-center w-full max-w-md">
+                    <button @click="if(!voted) { sendVote('like'); voted=true; status='like' }"
+                            :disabled="voted"
+                            :class="voted ? (status === 'like' ? 'bg-green-600 text-white border-green-600 shadow-md scale-95' : 'bg-gray-100 text-gray-400 border-gray-100 cursor-not-allowed') : 'bg-green-50 text-green-700 hover:bg-green-100 border border-green-200'"
+                            class="flex-1 flex flex-col items-center justify-center gap-3 py-5 px-6 rounded-2xl font-bold transition-all duration-300 shadow-sm border">
+                        <i class="fas fa-thumbs-up text-3xl"></i>
+                        <span>Puas (Like)</span>
+                    </button>
+                    <button @click="if(!voted) { sendVote('dislike'); voted=true; status='dislike' }"
+                            :disabled="voted"
+                            :class="voted ? (status === 'dislike' ? 'bg-red-600 text-white border-red-600 shadow-md scale-95' : 'bg-gray-100 text-gray-400 border-gray-100 cursor-not-allowed') : 'bg-red-50 text-red-700 hover:bg-red-100 border border-red-200'"
+                            class="flex-1 flex flex-col items-center justify-center gap-3 py-5 px-6 rounded-2xl font-bold transition-all duration-300 shadow-sm border">
+                        <i class="fas fa-thumbs-down text-3xl"></i>
+                        <span>Tidak Puas (Dislike)</span>
+                    </button>
+                </div>
+                
+                <div x-show="voted" x-transition class="mt-6 text-sm text-green-600 font-bold bg-green-50 px-5 py-2.5 rounded-xl border border-green-100" style="display: none;">
+                    <i class="fas fa-check-circle mr-1"></i> Terima kasih atas penilaian yang Anda berikan untuk kemajuan pelayanan kami!
                 </div>
             </div>
         </div>
@@ -104,4 +147,25 @@
     </div>
 </section>
 
+@endsection
+
+@section('scripts')
+<script>
+function sendVote(type) {
+    fetch('{{ route('layanan.saran.vote') }}', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Accept': 'application/json',
+            'X-CSRF-TOKEN': '{{ csrf_token() }}'
+        },
+        body: JSON.stringify({ tipe: type })
+    })
+    .then(response => response.json())
+    .then(data => {
+        console.log('Vote submitted:', data);
+    })
+    .catch(err => console.error('Error submitting vote:', err));
+}
+</script>
 @endsection

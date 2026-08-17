@@ -60,12 +60,14 @@
 {{-- STATS BAR — kartu mengambang menindih hero --}}
 <section class="relative z-20 -mt-16 px-4">
     <div class="container mx-auto">
-        <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 grid grid-cols-2 md:grid-cols-4 gap-2 p-4 md:p-6 text-center">
+        <div class="bg-white rounded-3xl shadow-2xl border border-gray-100 grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-2 p-4 md:p-6 text-center">
             @foreach([
                 ['ikon' => 'fa-calendar-check', 'target' => $settings['stats_tahun_berdiri'] ?? 1970, 'suffix' => '', 'label' => 'Tahun Berdiri'],
                 ['ikon' => 'fa-user-nurse', 'target' => $settings['stats_tenaga_medis'] ?? 150, 'suffix' => '+', 'label' => 'Tenaga Medis'],
                 ['ikon' => 'fa-bed', 'target' => $settings['stats_kapasitas_tt'] ?? 120, 'suffix' => ' TT', 'label' => 'Kapasitas Tempat Tidur'],
                 ['ikon' => 'fa-users', 'target' => $settings['stats_pasien_pertahun'] ?? 25000, 'suffix' => '+', 'label' => 'Pasien Per Tahun'],
+                ['ikon' => 'fa-thumbs-up text-green-500', 'target' => $likesCount ?? 0, 'suffix' => '', 'label' => 'Puas (Like)'],
+                ['ikon' => 'fa-thumbs-down text-red-500', 'target' => $dislikesCount ?? 0, 'suffix' => '', 'label' => 'Tidak Puas (Dislike)'],
             ] as $stat)
             <div class="reveal flex flex-col items-center py-4 px-2 rounded-2xl hover:bg-blue-50/60 transition-colors">
                 <div class="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center mb-3">

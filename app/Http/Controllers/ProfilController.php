@@ -2,7 +2,9 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Bidang;
 use App\Models\SiteSetting;
+use App\Models\Skm;
 
 class ProfilController extends Controller
 {
@@ -27,8 +29,6 @@ class ProfilController extends Controller
             'struktur_organisasi_keterangan',
             'maklumat_gambar',
             'maklumat_teks',
-            'skm_gambar',
-            'skm_teks',
             'nama_rs',
             'alamat',
             'telepon',
@@ -68,13 +68,14 @@ class ProfilController extends Controller
 
     public function strukturOrganisasi()
     {
-        $s = $this->settings();
         $settings = SiteSetting::pluck('value', 'key');
+        $bidangs = Bidang::with(['strukturs' => function ($q) {
+            $q->aktif()->orderBy('urutan');
+        }])->orderBy('urutan')->get();
 
         return view('profil.struktur-organisasi', [
-            'gambar' => $s['struktur_organisasi_gambar'] ?? null,
-            'keterangan' => $s['struktur_organisasi_keterangan'] ?? '',
-            'nama_rs' => $s['nama_rs'] ?? 'RSUD Landak',
+            'bidangs' => $bidangs,
+            'nama_rs' => $settings['nama_rs'] ?? 'RSUD Landak',
             'settings' => $settings,
         ]);
     }
@@ -86,6 +87,7 @@ class ProfilController extends Controller
 
         return view('profil.maklumat', [
             'gambar' => $s['maklumat_gambar'] ?? $s['profil_rs_foto'] ?? null,
+            'has_custom_gambar' => ! empty($s['maklumat_gambar']),
             'teks' => $s['maklumat_teks'] ?? '',
             'nama_rs' => $s['nama_rs'] ?? 'RSUD Landak',
             'settings' => $settings,
@@ -94,13 +96,12 @@ class ProfilController extends Controller
 
     public function skm()
     {
-        $s = $this->settings();
         $settings = SiteSetting::pluck('value', 'key');
+        $skms = Skm::aktif()->orderBy('tahun', 'desc')->orderBy('urutan', 'asc')->get()->groupBy('tahun');
 
         return view('profil.skm', [
-            'gambar' => $s['skm_gambar'] ?? $s['profil_rs_foto'] ?? null,
-            'teks' => $s['skm_teks'] ?? '',
-            'nama_rs' => $s['nama_rs'] ?? 'RSUD Landak',
+            'skms' => $skms,
+            'nama_rs' => $settings['nama_rs'] ?? 'RSUD Landak',
             'settings' => $settings,
         ]);
     }

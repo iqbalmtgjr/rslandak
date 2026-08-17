@@ -8,6 +8,7 @@ use App\Models\Dokter;
 use App\Models\Berita;
 use App\Models\Kamar;
 use App\Models\SiteSetting;
+use App\Models\Saran;
 
 class HomeController extends Controller
 {
@@ -19,7 +20,9 @@ class HomeController extends Controller
         $kamars = Kamar::where('aktif', true)->orderBy('urutan')->get();
         $beritas = Berita::where('aktif', true)->latest()->take(3)->get();
         $settings = SiteSetting::pluck('value', 'key');
+        $likesCount = Saran::where('tipe', 'like')->count();
+        $dislikesCount = Saran::where('tipe', 'dislike')->count();
 
-        return view('home', compact('heroes', 'layanans', 'dokters', 'kamars', 'beritas', 'settings'));
+        return view('home', compact('heroes', 'layanans', 'dokters', 'kamars', 'beritas', 'settings', 'likesCount', 'dislikesCount'));
     }
 }
